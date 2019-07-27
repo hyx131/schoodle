@@ -3,16 +3,24 @@
   <head>
     <title>Create Event</title>
 
-    <!-- includes styles/scripts from index.ejs file -->
-    <% include ./partials/_index %>
+    <!-- includes CSS/Bootstrap styles -->
+    <% include ./partials/_indexLink %>
   </head>
 
   <body>
-    <% include partials/_header %>
+    <header>
+      <% include partials/_header %>
+    </header>
 
     <h1>FORM CREATION PAGE</h1>
     <p>title, description, location</p>
     <h2>DROP DOWN</h2>
     <p>calendar</p>
+
+
+
+
+      <!-- includes Bootstrap/JQuery JS -->
+      <% include ./partials/_indexScripts %>
   </body>
 </html>
