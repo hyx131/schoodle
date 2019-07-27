@@ -11,19 +11,36 @@
     <header>
       <% include partials/_header %>
     </header>
+    <div>
+      <h1>EVENTS ADMIN EDIT PAGE</h1>
+    </div>
+    <div>
+      <textarea class="title">Title</textarea>
 
-    <h1>EVENTS ADMIN EDIT PAGE</h1>
+      <textarea class="location">Location</textarea>
 
-    <div><textarea class="Title">Title</textarea></div>
-
-    <div><textarea class="Location">Location</textarea></div>
-
-    <div><textarea class="Description">Description</textarea></div>
-
+      <textarea class="description">Description</textarea>
+    </div>
     <div>
       <img
         src="https://ugcorigin.s-microsoft.com/100/94bc52ad-c2fb-429b-abf6-52fd4ce103a4/200/v3/image.jpg"
       />
+    </div>
+    <div>
+      <h1>Comments Area</h1>
+      <form action="/events/:admin_slug" method="post">
+        <div>
+          <textarea
+            name="comments"
+            id="comments"
+            style="font-family:sans-serif;font-size:1.2em;"
+          >
+        Hey... say something!
+        </textarea
+          >
+        </div>
+        <input type="submit" value="Submit" />
+      </form>
     </div>
 
     <!-- includes Bootstrap/JQuery JS -->
