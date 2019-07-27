@@ -11,17 +11,70 @@
     <header>
       <% include partials/_header %>
     </header>
+    <main>
+      <div><h1>Create Your Event</h1></div>
+      <div>
+        <form>
+          <!-- /* Move all the styling over to the SCSS FILE, these are just here for now */ -->
 
-    <h1>Create Your Event</h1>
-    <p>Title, Description, Location</p>
-    <button>Submit</button>
+          <label for="title">Title of the Event</label>
+          <input
+            class="form-control"
+            type="text"
+            name="title"
+            placeholder="Enter Here"
+            style="width: 300px; margin: 1em"
+          />
+          <!-- /* Move all the styling over to the SCSS FILE, these are just here for now */ -->
 
-    <h2>DROP DOWN</h2>
-    <p>calendar</p>
-    <button>Submit</button>
+          <label for="descriptions">Description</label>
+          <input
+            class="form-control"
+            type="text"
+            name="description"
+            placeholder="Enter Here"
+            style="width: 300px; margin: 1em"
+          />
+          <!-- /* Move all the styling over to the SCSS FILE, these are just here for now */ -->
 
-    <h3>INVITES</h3>
-    <button>Submit</button>
+          <label for="location">Location</label>
+          <input
+            class="form-control"
+            type="text"
+            name="Location"
+            placeholder="Enter Here"
+            style="width: 300px; margin: 1em"
+          />
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <!-- /* Move all the styling over to the SCSS FILE, these are just here for visual purposes */ -->
+
+      <div>
+        <h1>DROP DOWN EFFECT Calendar</h1>
+        <h2>
+          <img
+            src="https://ugcorigin.s-microsoft.com/100/94bc52ad-c2fb-429b-abf6-52fd4ce103a4/200/v3/image.jpg"
+          />
+        </h2>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+
+      <!-- /* Move all the styling over to the SCSS FILE, these are just here for now */ -->
+
+      <div>
+        <h1>DROP DOWN EFFECT <b>INVITES</b></h1>
+        <label for="invites">Invites</label>
+        <input
+          class="form-control"
+          type="text"
+          name="invites"
+          placeholder="Enter Email Here"
+          style="width: 300px; margin: 1em"
+        />
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </main>
 
     <!-- includes Bootstrap/JQuery JS -->
     <% include ./partials/_indexScripts %>
