@@ -13,9 +13,15 @@
     </header>
 
     <h1>HOME PAGE WITH 'CREATE' BUTTON ON PAGE</h1>
-    <div>
-      <button>Create</button>
-    </div>
+    <main>
+      <div>
+        <form method="POST" action="/">
+          <button type="submit" class="btn btn-primary">
+            Create New Event
+          </button>
+        </form>
+      </div>
+    </main>
 
     <!-- includes Bootstrap/JQuery JS -->
     <% include ./partials/_indexScripts %>
