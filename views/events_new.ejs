@@ -11,11 +11,6 @@
     <header>
       <% include partials/_header %>
     </header>
-    <main>
-      <div><h1>Create Your Event</h1></div>
-      <form class="create-new-events" action="/" method="POST">
-        <div>
-          <!-- /* Move all the styling over to the SCSS FILE, these are just here for now */ -->
 
           <label for="title">Name</label>
           <input
@@ -69,14 +64,69 @@
         </div>
 
         <!-- /* Move all the styling over to the SCSS FILE, these are just here for visual purposes */ -->
+    <main class="event-information-container" style="margin: 1em;">
+      <div>
+        <h3>Event Information</h3>
+        <form action="/events/new" method="POST">
+          <div>
+            <label for="name">First Name Last Name</label>
+            <input
+              class="form-control"
+              type="userName"
+              name="name"
+              placeholder="Enter here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+          </div>
 
-        <div>
-          <h1>DROP DOWN EFFECT Calendar</h1>
+
+
+
+          <div>
+            <label for="title">Event Title</label>
+
+            <input
+              class="form-control"
+              type="title"
+              name="title"
+              placeholder="Enter here"
+              style="width: 300px; margin: 0em; margin-top: em; margin-bottom: 1em"
+            />
+          </div>
+          <div>
+            <label for="description"> Event Description</label>
+            <input
+              class="form-control"
+              type="description"
+              name="description"
+              placeholder="Enter here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+          </div>
+          <div>
+            <label for="location">Event Location</label>
+            <input
+              class="form-control"
+              type="location"
+              name="location"
+              placeholder="Enter here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary">Continue</button>
+          </div>
+        </form>
+      </div>
+      <div>
+        <form action="/events/new" method="POST">
+          <h3>DROP DOWN EFFECT - Calendar -</h3>
           <h2>
             <img
-              src="https://ugcorigin.s-microsoft.com/100/94bc52ad-c2fb-429b-abf6-52fd4ce103a4/200/v3/image.jpg"
+              src="https://raw.githubusercontent.com/nathanreyes/v-calendar-docs/master/gitbook/images/README/welcome-1.png"
             />
           </h2>
+<<<<<<< HEAD
           <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
         </div>
 
@@ -95,8 +145,49 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
+=======
+          <button type="submit" class="btn btn-primary">Continue</button>
+        </form>
+      </div>
+      <div>
+        <h3>DROP DOWN EFFECT - Who Do You Want To Invite? -</h3>
+        <form>
+          <div>
+            <label for="invites">Invite Attendees</label>
+            <input
+              class="form-control"
+              type="invites"
+              name="invites"
+              placeholder="Enter email here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+            <input
+              class="form-control"
+              type="invites"
+              name="invites"
+              placeholder="Enter email here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+            <input
+              class="form-control"
+              type="invites"
+              name="invites"
+              placeholder="Enter email here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+            <input
+              class="form-control"
+              type="invites"
+              name="invites"
+              placeholder="Enter email here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+            <button type="submit" class="btn btn-primary">Continue</button>
+          </div>
+        </form>
+      </div>
+>>>>>>> create-mailgun
     </main>
-
     <!-- includes Bootstrap/JQuery JS -->
     <% include ./partials/_indexScripts %>
   </body>

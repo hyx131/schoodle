@@ -55,7 +55,6 @@ app.use("/events/new", eventsNewRoutes.navigateToPage(db));
 app.use("/events/:admin_slug", eventsAdminRoutes(db));
 app.use("/events/:public_slug", eventsPublicRoutes(db));
 
-
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
