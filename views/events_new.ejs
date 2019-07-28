@@ -53,10 +53,14 @@
         <div>
           <h1>DROP DOWN EFFECT Calendar</h1>
 
-          <form method="POST" action='/events'>
+          <form method="POST" action='/'>
             <input type="text" id="pick_date" placeholder="Please select Date Time">
-            <input type='text' id='start_time' placeholder='start time'>
-            <input type='text' id='end_time' placeholder='end time'>
+
+
+            <section class='time_slots'>
+                <input type='text' id='start_time' placeholder='start time'>
+                <input type='text' id='end_time' placeholder='end time'>
+            </section>
 
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
