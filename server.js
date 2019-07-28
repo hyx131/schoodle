@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
+const addUser = require("./routes/eventsNew.js")
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -50,7 +51,7 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 app.use("/events", eventsRoutes(db));
-app.use("/events/new", eventsNewRoutes(db));
+app.use("/events/new", eventsNewRoutes.navigateToPage(db));
 app.use("/events/:admin_slug", eventsAdminRoutes(db));
 app.use("/events/:public_slug", eventsPublicRoutes(db));
 
@@ -61,6 +62,23 @@ app.use("/events/:public_slug", eventsPublicRoutes(db));
 app.get("/", (req, res) => {
   res.render("home");
 });
+
+app.post("/", (req, res) => {
+  const allData = { users: {}, events: {} }
+
+  allData.users.userName = req.body.userName ? req.body.userName : null
+  allData.users.userEmail = req.body.userEmail ? req.body.userEmail : null
+  allData.events.userEvent = req.body.userEvent ? req.body.userEvent : null
+  allData.events.eventDescription = req.body.eventDescription ? req.body.eventDescription : null
+  allData.events.address = req.body.eventLocation ? req.body.eventLocation : null
+
+  addUser.addUser(allData)
+
+});
+
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
