@@ -11,56 +11,135 @@
     <header>
       <% include partials/_header %>
     </header>
-    <main>
-      <div><h1>Create Your Event</h1></div>
-      <form class="create-new-events" action="/" method="POST">
-        <div>
-          <!-- /* Move all the styling over to the SCSS FILE, these are just here for now */ -->
+    <!-- /* Move all the styling over to the SCSS FILE, these are just here for visual purposes */ -->
+    <main class="event-information-container" style="margin: 1em;">
+      <div>
+        <h3>Event Information</h3>
+        <form action="/events" method="POST">
+          <div>
+            <label for="name">First Name Last Name</label>
+            <input
+              class="form-control"
+              type="userName"
+              name="userName"
+              placeholder="Enter here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input
+              class="form-control"
+              type="userEmail"
+              name="userEmail"
+              placeholder="Enter here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+          </div>
+          <div>
+            <label for="title">Event Title</label>
 
-          <label for="title">Title of the Event</label>
-          <input
-            class="form-control"
-            type="text"
-            name="title"
-            placeholder="Enter Here"
-            style="width: 300px; margin: 1em"
-          />
-          <!-- /* Move all the styling over to the SCSS FILE, these are just here for now */ -->
+            <input
+              class="form-control"
+              type="userEvent"
+              name="userEvent"
+              placeholder="Enter here"
+              style="width: 300px; margin: 0em; margin-top: em; margin-bottom: 1em"
+            />
+          </div>
+          <div>
+            <label for="description"> Event Description</label>
+            <input
+              class="form-control"
+              type="eventDescription"
+              name="eventDescription"
+              placeholder="Enter here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+          </div>
+          <div>
+            <label for="location">Event Location</label>
+            <input
+              class="form-control"
+              type="eventLocation"
+              name="eventLocation"
+              placeholder="Enter here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary">Continue</button>
+          </div>
+        </form>
+      </div>
 
-          <label for="descriptions">Description</label>
-          <input
-            class="form-control"
-            type="text"
-            name="description"
-            placeholder="Enter Here"
-            style="width: 300px; margin: 1em"
-          />
-          <!-- /* Move all the styling over to the SCSS FILE, these are just here for now */ -->
+      <div>
+        <h3> (DROP DOWN) Choose Dates & Times </h3>
+          <form action="/events" method="POST">
+            <input
+              type="text"
+              id="pick_date"
+              name="eventDates"
+              placeholder="Please select Date Time"
+            />
 
-          <label for="location">Location</label>
-          <input
-            class="form-control"
-            type="text"
-            name="Location"
-            placeholder="Enter Here"
-            style="width: 300px; margin: 1em"
-          />
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
+            <section class='time_slots'>
+              <p>Jul-25-2019</p>
+              <input
+                type='text'
+                id='start_time'
+                name="start_time"
+                placeholder='start time'
+                />
+              <input
+                type='text'
+                id='end_time'
+                name="end_time"
+                placeholder='end time'
+                />
+            </section>
 
-        <!-- /* Move all the styling over to the SCSS FILE, these are just here for visual purposes */ -->
-
-        <div>
-          <h1>DROP DOWN EFFECT Calendar</h1>
-
-          <form method="POST" action='/events'>
-            <input type="text" id="pick_date" placeholder="Please select Date Time">
-            <input type='text' id='start_time' placeholder='start time'>
-            <input type='text' id='end_time' placeholder='end time'>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <!-- <button type="submit" class="btn btn-primary">Continue</button> -->
           </form>
-        </div>
+      </div>
+
+      <div>
+        <h3>DROP DOWN EFFECT - Who Do You Want To Invite? -</h3>
+        <form>
+          <div>
+            <label for="invites">Invite Attendees</label>
+            <input
+              class="form-control"
+              type="invites"
+              name="invites"
+              placeholder="Enter email here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+            <input
+              class="form-control"
+              type="invites"
+              name="invites"
+              placeholder="Enter email here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+            <input
+              class="form-control"
+              type="invites"
+              name="invites"
+              placeholder="Enter email here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+            <input
+              class="form-control"
+              type="invites"
+              name="invites"
+              placeholder="Enter email here"
+              style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+            />
+            <!-- <button type="submit" class="btn btn-primary">Continue</button> -->
+          </div>
+        </form>
+      </div>
 
         <!-- /* Move all the styling over to the SCSS FILE, these are just here for now */ -->
 
@@ -74,13 +153,17 @@
             placeholder="Enter Email Here"
             style="width: 300px; margin: 1em"
           />
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
         </div>
       </form>
     </main>
-
     <!-- includes Bootstrap/JQuery JS -->
     <% include ./partials/_indexScripts %>
+
+
+
+
+
 
     <!-- Client side jquery for calendar -->
     <script>
@@ -90,11 +173,11 @@
         altInput: true,
         altFormat: "F j, Y",
         dateFormat: "Y-m-d",
-        "disable": [
+        disable: [
           function(date) {
             let today = new Date();
-              today.setHours(0,0,0,0);
-              return (date < today); //disable past dates >> return true to disable
+            today.setHours(0, 0, 0, 0);
+            return date < today; //disable past dates >> return true to disable
           }
         ]
       });
@@ -103,16 +186,15 @@
         inline: true,
         enableTime: true,
         noCalendar: true,
-        dateFormat: "H:i",
+        dateFormat: "H:i"
       });
 
       $("#end_time").flatpickr({
         inline: true,
         enableTime: true,
         noCalendar: true,
-        dateFormat: "H:i",
+        dateFormat: "H:i"
       });
     </script>
-
   </body>
 </html>

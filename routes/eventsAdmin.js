@@ -6,5 +6,7 @@ module.exports = db => {
     res.render("../views/events_admin");
   });
 
+  router.post("/");
+
   return router;
 };
