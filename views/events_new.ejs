@@ -52,12 +52,14 @@
 
         <div>
           <h1>DROP DOWN EFFECT Calendar</h1>
-          <h2>
-            <img
-              src="https://ugcorigin.s-microsoft.com/100/94bc52ad-c2fb-429b-abf6-52fd4ce103a4/200/v3/image.jpg"
-            />
-          </h2>
-          <button type="submit" class="btn btn-primary">Submit</button>
+
+          <form method="POST" action='/events'>
+            <input type="text" id="pick_date" placeholder="Please select Date Time">
+            <input type='text' id='start_time' placeholder='start time'>
+            <input type='text' id='end_time' placeholder='end time'>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
 
         <!-- /* Move all the styling over to the SCSS FILE, these are just here for now */ -->
@@ -79,5 +81,38 @@
 
     <!-- includes Bootstrap/JQuery JS -->
     <% include ./partials/_indexScripts %>
+
+    <!-- Client side jquery for calendar -->
+    <script>
+      $("#pick_date").flatpickr({
+        mode: "multiple",
+        inline: true,
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+        "disable": [
+          function(date) {
+            let today = new Date();
+              today.setHours(0,0,0,0);
+              return (date < today); //disable past dates >> return true to disable
+          }
+        ]
+      });
+
+      $("#start_time").flatpickr({
+        inline: true,
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+      });
+
+      $("#end_time").flatpickr({
+        inline: true,
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+      });
+    </script>
+
   </body>
 </html>
