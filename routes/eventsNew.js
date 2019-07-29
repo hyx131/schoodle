@@ -68,9 +68,7 @@ module.exports = {
     router.get("/", (req, res) => {
       res.render("../views/events_new");
     });
-    // router.post("/", (req, res) => {
-    //   res.redirect("/events");
-    // });
+
     return router;
   }
 };
