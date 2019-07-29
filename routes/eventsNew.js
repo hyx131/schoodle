@@ -5,8 +5,6 @@ const { Pool } = require("pg");
 /*******************************MAILGUN BELOW******************************/
 
 // const mailgun = require("mailgun-js");
-// const api_key = "29d32e359e7c667bc5221a4dd4fc1e3c-c50f4a19-3f18e980";
-// const DOMAIN = "sandbox60a2c85051984f98a8bd718646dbeaed.mailgun.org";
 // const mg = mailgun({ apiKey: api_key, domain: DOMAIN });
 
 // const data = {
@@ -94,4 +92,3 @@ module.exports = {
 
 //   return router;
 // };
-
