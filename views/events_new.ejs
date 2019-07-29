@@ -39,7 +39,6 @@
           <div>
             <label for="title">Event Title</label>
 
-<<<<<<< HEAD
             <input
               class="form-control"
               type="userEvent"
@@ -73,17 +72,22 @@
           </div>
         </form>
       </div>
+
       <div>
-        <form action="/events/new" method="POST">
-          <h3>DROP DOWN EFFECT - Calendar -</h3>
-          <h2>
-            <img
-              src="https://raw.githubusercontent.com/nathanreyes/v-calendar-docs/master/gitbook/images/README/welcome-1.png"
-            />
-          </h2>
-          <button type="submit" class="btn btn-primary">Continue</button>
-        </form>
+        <h3>DROP DOWN EFFECT Calendar</h3>
+          <form action="/events/new" method="POST">
+            <input type="text" id="pick_date" placeholder="Please select Date Time">
+
+            <section class='time_slots'>
+              <p>Jul-25-2019</p>
+              <input type='text' id='start_time' placeholder='start time'>
+              <input type='text' id='end_time' placeholder='end time'>
+            </section>
+
+            <button type="submit" class="btn btn-primary">Continue</button>
+          </form>
       </div>
+
       <div>
         <h3>DROP DOWN EFFECT - Who Do You Want To Invite? -</h3>
         <form>
@@ -121,23 +125,6 @@
           </div>
         </form>
       </div>
-=======
-        <div>
-          <h1>DROP DOWN EFFECT Calendar</h1>
-
-          <form method="POST" action='/'>
-            <input type="text" id="pick_date" placeholder="Please select Date Time">
-
-
-            <section class='time_slots'>
-                <p>Jul-25-2019</p>
-                <input type='text' id='start_time' placeholder='start time'>
-                <input type='text' id='end_time' placeholder='end time'>
-            </section>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
 
         <!-- /* Move all the styling over to the SCSS FILE, these are just here for now */ -->
 
@@ -154,10 +141,14 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
->>>>>>> calendar
     </main>
     <!-- includes Bootstrap/JQuery JS -->
     <% include ./partials/_indexScripts %>
+
+
+
+
+
 
     <!-- Client side jquery for calendar -->
     <script>
