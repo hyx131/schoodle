@@ -1,12 +1,10 @@
-const express = require('express');
-const router  = express.Router();
+const express = require("express");
+const router = express.Router();
 
-module.exports = (db) => {
+module.exports = db => {
   router.get("/", (req, res) => {
     res.render("../views/events_final");
   });
 
   return router;
 };
-
-
