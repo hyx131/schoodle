@@ -68,39 +68,41 @@
             />
           </div>
           <div>
-            <button type="submit" class="btn btn-primary">Continue</button>
           </div>
-        </form>
-      </div>
+        </div>
 
-      <div>
-        <h3> (DROP DOWN) Choose Dates & Times </h3>
-          <form action="/events" method="POST">
-            <input
+        <div class='calendar'>
+          <h3> (DROP DOWN) Choose Dates & Times </h3>
+
+          <section class='calendar_forms'>
+            <section class='date'>
+              <input
               type="text"
               id="pick_date"
-              name="eventDates"
+              name="eventDate"
               placeholder="Please select Date Time"
-            />
+              />
+            </section>
 
             <section class='time_slots'>
               <p>Jul-25-2019</p>
               <input
-                type='text'
-                id='start_time'
-                name="start_time"
-                placeholder='start time'
-                />
+              type='text'
+              id='start_time'
+              name="startTime"
+              placeholder='start time'
+              />
               <input
-                type='text'
-                id='end_time'
-                name="end_time"
-                placeholder='end time'
-                />
+              type='text'
+              id='end_time'
+              name="endTime"
+              placeholder='end time'
+              />
             </section>
 
-            <!-- <button type="submit" class="btn btn-primary">Continue</button> -->
+            <button type="submit" class="btn btn-primary">Continue</button>
           </form>
+        </section>
       </div>
 
       <div>
@@ -181,6 +183,37 @@
           }
         ]
       });
+      // $("#start_time").flatpickr({
+      //   mode: "multiple",
+      //   inline: true,
+      //   altInput: true,
+      //   enableTime: true,
+      //   altFormat: "F j, Y",
+      //   dateFormat: "Y-m-d",
+      //   "disable": [
+      //     function(date) {
+      //       let today = new Date();
+      //         today.setHours(0,0,0,0);
+      //         return (date < today); //disable past dates >> return true to disable
+      //     }
+      //   ]
+      // });
+
+      // $("#end_time").flatpickr({
+      //   mode: "multiple",
+      //   inline: true,
+      //   altInput: true,
+      //   enableTime: true,
+      //   altFormat: "F j, Y",
+      //   dateFormat: "Y-m-d",
+      //   "disable": [
+      //     function(date) {
+      //       let today = new Date();
+      //         today.setHours(0,0,0,0);
+      //         return (date < today); //disable past dates >> return true to disable
+      //     }
+      //   ]
+      // });
 
       $("#start_time").flatpickr({
         inline: true,
