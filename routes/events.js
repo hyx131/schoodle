@@ -6,6 +6,10 @@ module.exports = (db) => {
     res.render("../views/events_final");
   });
 
+  router.post("/", (req, res) => {
+    res.redirect("/events/new");
+  })
+
   return router;
 };
 

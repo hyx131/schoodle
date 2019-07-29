@@ -84,9 +84,13 @@ app.post("/", (req, res) => {
   allData.events.address = req.body.eventLocation
     ? req.body.eventLocation
     : null;
+
+  // calendar
+  allData.events.eventDates = req.body.eventDates ? req.body.eventDates : null;
   addUser.addUser(allData);
 });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
