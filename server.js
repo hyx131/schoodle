@@ -28,16 +28,19 @@ app.use(morgan("dev"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
+/****************** SASS CONFIGURATION *****************/
+
 app.use(
-  "/styles",
+  "/scss-styles",
   sass({
-    src: __dirname + "/styles",
+    src: __dirname + "/scss-styles",
     dest: __dirname + "/public/styles",
     debug: true,
     outputStyle: "expanded"
   })
 );
 app.use(express.static("public"));
+
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own

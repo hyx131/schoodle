@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home</title>
+<head>
+  <!-- Meta Information -->
+  <title>Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <!-- External Links -->
+  <% include ./partials/_indexLinks %>
+</head>
 
-    <!-- includes CSS/Bootstrap styles -->
-    <% include ./partials/_indexLink %>
-  </head>
+<body>
+  <header>
+    <% include partials/_header %>
+  </header>
 
-  <body>
-    <header>
-      <% include partials/_header %>
-    </header>
+  <h1>HOME PAGE WITH 'CREATE' BUTTON ON PAGE</h1>
+  <main>
+    <div>
+      <form method="POST" action="/">
+        <button type="submit" class="btn btn-primary">
+          Create New Event
+        </button>
+      </form>
+    </div>
+  </main>
 
-    <h1>HOME PAGE WITH 'CREATE' BUTTON ON PAGE</h1>
-    <main>
-      <div>
-        <form method="POST" action="/">
-          <button type="submit" class="btn btn-primary">
-            Create New Event
-          </button>
-        </form>
-      </div>
-    </main>
+  <!-- includes Bootstrap/JQuery JS -->
+  <% include ./partials/_indexScripts %>
+</body>
 
-    <!-- includes Bootstrap/JQuery JS -->
-    <% include ./partials/_indexScripts %>
-  </body>
 </html>
