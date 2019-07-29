@@ -5,8 +5,6 @@ const { Pool } = require("pg");
 /*******************************MAILGUN BELOW******************************/
 
 // const mailgun = require("mailgun-js");
-// const api_key = "29d32e359e7c667bc5221a4dd4fc1e3c-c50f4a19-3f18e980";
-// const DOMAIN = "sandbox60a2c85051984f98a8bd718646dbeaed.mailgun.org";
 // const mg = mailgun({ apiKey: api_key, domain: DOMAIN });
 
 // const data = {
@@ -31,29 +29,41 @@ const addUser = function(database) {
   console.log(database);
 
   const text = "INSERT INTO users(name, email) VALUES($1, $2) RETURNING *";
+  pool.query(text, [database.users.userName, database.users.userEmail])
 
-  console.log(database.users.userName, database.users.userEmail);
-
-  pool
-    .query(text, [database.users.userName, database.users.userEmail])
-    .then(results => {
-      console.log(results.rows[0]);
+  .then(results => {
+    console.log(results.rows[0]);
 
       return pool.query(
         `
-  INSERT INTO events (name, address, description )
-  VALUES ($1, $2, $3) RETURNING *;
-  `,
+        INSERT INTO events (name, address, description, admin_token, guest_token, user_id )
+        VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;
+        `,
         [
           database.events.userEvent,
           database.events.address,
-          database.events.eventDescription
+          database.events.eventDescription,
+          "token",
+          "guest_token",
+          1
         ]
       );
     })
+
     .then(results => {
+
       console.log(results.rows[0]);
+      return pool.query(`
+        INSERT INTO time_slots (event_date, start_time, end_time, event_id)
+        VALUES ($1, $2, $3, $4) RETURNING *;
+      `, [
+        database.time_slots.eventDate ,
+        database.time_slots.startTime,
+        database.time_slots.endTime,
+        1
+      ]);
     })
+
     .then(results => {
       console.log(results.rows[0]);
     })

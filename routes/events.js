@@ -8,9 +8,13 @@ module.exports = db => {
   });
 
   router.post("/", (req, res) => {
-    const allData = { users: {}, events: {} };
+    const allData = { users: {}, events: {}, time_slots: {} };
+
+    // useres
     allData.users.userName = req.body.userName ? req.body.userName : null;
     allData.users.userEmail = req.body.userEmail ? req.body.userEmail : null;
+
+    // events
     allData.events.userEvent = req.body.userEvent ? req.body.userEvent : null;
     allData.events.eventDescription = req.body.eventDescription
       ? req.body.eventDescription
@@ -20,9 +24,14 @@ module.exports = db => {
       : null;
 
     // calendar
-    allData.events.eventDates = req.body.eventDates
-      ? req.body.eventDates
+    allData.time_slots.eventDate = req.body.eventDate
+      ? req.body.eventDate
       : null;
+    allData.time_slots.startTime = req.body.startTime
+      ? req.body.startTime
+      : null;
+    allData.time_slots.endTime = req.body.endTime ? req.body.endTime : null;
+
     addUser.addUser(allData);
 
     res.redirect("/events/new");

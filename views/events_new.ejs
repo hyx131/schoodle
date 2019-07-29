@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Create Event</title>
+<head>
+  <!-- Meta Information -->
+  <title>New Events</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-    <!-- includes CSS/Bootstrap styles -->
-    <% include ./partials/_indexLink %>
-  </head>
+  <!-- External Links -->
+  <% include ./partials/_indexLinks %>
+</head>
 
   <body>
     <header>
@@ -68,11 +71,10 @@
             />
           </div>
           <div>
-            <button type="submit" class="btn btn-primary">Continue</button>
           </div>
-        </form>
-      </div>
+        </div>
 
+<<<<<<< HEAD
       <div>
         <h3> (DROP DOWN) Choose Dates & Times </h3>
           <form action="/events" method="POST">
@@ -82,10 +84,25 @@
               name="eventDates"
               placeholder="Please select Date Time"
             />
+=======
+        <div class='calendar'>
+          <h3> (DROP DOWN) Choose Dates & Times </h3>
+
+          <section class='calendar_forms'>
+            <section class='date'>
+              <input
+              type="text"
+              id="pick_date"
+              name="eventDate"
+              placeholder="Please select Date Time"
+              />
+            </section>
+>>>>>>> 445fcdd4b59411dddfa578546514445ad62c08be
 
             <section class='time_slots'>
               <p>Jul-25-2019</p>
               <input
+<<<<<<< HEAD
                 type='text'
                 id='start_time'
                 name="start_time"
@@ -97,10 +114,24 @@
                 name="end_time"
                 placeholder='end time'
                 />
+=======
+              type='text'
+              id='start_time'
+              name="startTime"
+              placeholder='start time'
+              />
+              <input
+              type='text'
+              id='end_time'
+              name="endTime"
+              placeholder='end time'
+              />
+>>>>>>> 445fcdd4b59411dddfa578546514445ad62c08be
             </section>
 
             <!-- <button type="submit" class="btn btn-primary">Continue</button> -->
           </form>
+        </section>
       </div>
 
       <div>
@@ -181,6 +212,37 @@
           }
         ]
       });
+      // $("#start_time").flatpickr({
+      //   mode: "multiple",
+      //   inline: true,
+      //   altInput: true,
+      //   enableTime: true,
+      //   altFormat: "F j, Y",
+      //   dateFormat: "Y-m-d",
+      //   "disable": [
+      //     function(date) {
+      //       let today = new Date();
+      //         today.setHours(0,0,0,0);
+      //         return (date < today); //disable past dates >> return true to disable
+      //     }
+      //   ]
+      // });
+
+      // $("#end_time").flatpickr({
+      //   mode: "multiple",
+      //   inline: true,
+      //   altInput: true,
+      //   enableTime: true,
+      //   altFormat: "F j, Y",
+      //   dateFormat: "Y-m-d",
+      //   "disable": [
+      //     function(date) {
+      //       let today = new Date();
+      //         today.setHours(0,0,0,0);
+      //         return (date < today); //disable past dates >> return true to disable
+      //     }
+      //   ]
+      // });
 
       $("#start_time").flatpickr({
         inline: true,

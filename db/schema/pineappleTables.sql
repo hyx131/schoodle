@@ -16,10 +16,9 @@ CREATE TABLE events (
   id SERIAL PRIMARY KEY NOT NULL,
   name TEXT NOT NULL,
   description TEXT,
-  start_date DATE NOT NULL,
-  end_date DATE NOT NULL,
   address TEXT NOT NULL,
-  token TEXT NOT NULL,
+  admin_token TEXT NOT NULL,
+  guest_token TEXT NOT NULL,
   user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE
 );
 
@@ -33,8 +32,9 @@ CREATE TABLE rsvps (
 
 CREATE TABLE time_slots (
   id SERIAL PRIMARY KEY NOT NULL,
-  start_time TIMESTAMP,
-  end_time TIMESTAMP,
+  event_date DATE,
+  start_time TEXT ,
+  end_time TEXT,
   event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE
 );
 
