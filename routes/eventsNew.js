@@ -96,7 +96,6 @@ module.exports = {
     router.get("/", (req, res) => {
       res.render("../views/events_new");
     });
-
     return router;
   }
 };
