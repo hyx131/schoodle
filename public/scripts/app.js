@@ -1,7 +1,5 @@
-
 // helper function to generate new time slots:
 const createTimeSlots = function(date) {
-
   let $slot = `
   <p>${date}</p>
   <label for='start_time'>Start Time:</label>
@@ -22,11 +20,23 @@ const createTimeSlots = function(date) {
   return $slot;
 };
 
-
 // helper function to display month properly:
 const getMonth = function(month) {
-  let arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-  let m = '';
+  let arr = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
+  let m = "";
   for (let i = 0; i < arr.length; i++) {
     if (i === month) {
       m += arr[i];
@@ -34,7 +44,6 @@ const getMonth = function(month) {
   }
   return m;
 };
-
 
 // clicking 'onChange' event on calendar then render the 'time_slots' section:
 $(document).ready(function() {
@@ -48,10 +57,7 @@ $(document).ready(function() {
 
       const dateString = getMonth(month) + "/" + date + "/" + year;
 
-      $('.time_slots').append(createTimeSlots(dateString));
+      $(".time_slots").append(createTimeSlots(dateString));
     }
-  })
+  });
 });
-
-
-
