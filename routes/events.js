@@ -60,9 +60,9 @@ module.exports = db => {
       : null;
 
     // calendar
-    allData.time_slots.eventDate = req.body.eventDate
-      ? req.body.eventDate
-      : null;
+    // allData.time_slots.eventDate = req.body.eventDate
+    //   ? req.body.eventDate
+    //   : null;
     allData.time_slots.startTime = req.body.startTime
       ? req.body.startTime
       : null;
