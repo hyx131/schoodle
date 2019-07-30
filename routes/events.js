@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const addUser = require("./eventsNew");
+const { Pool } = require("pg");
 
 /******************************************************************************/
 // const mailgun = require("mailgun-js");
@@ -15,6 +16,14 @@ const addUser = require("./eventsNew");
 //   subject: "Pineapple Event",
 //   text: "Hello!"
 // };
+
+const pool = new Pool({
+  user: "labber",
+  host: "localhost",
+  database: "midterm",
+  password: "labber",
+  port: 5432
+});
 
 /*********************************************************************************/
 
@@ -58,19 +67,23 @@ module.exports = db => {
     allData.events.address = req.body.eventLocation
       ? req.body.eventLocation
       : null;
-
     // calendar
-    // allData.time_slots.eventDate = req.body.eventDate
-    //   ? req.body.eventDate
-    //   : null;
+    allData.time_slots.eventDate = req.body.eventDate
+      ? req.body.eventDate
+      : null;
     allData.time_slots.startTime = req.body.startTime
       ? req.body.startTime
       : null;
     allData.time_slots.endTime = req.body.endTime ? req.body.endTime : null;
 
+    pool
+      .query(`SELECT admin_token, guest_token FROM events WHERE events.id = 1`)
+      .then(results => {
+        allData.events.admin_token = results.rows[0].admin_token;
+        allData.events.guest_token = results.rows[0].guest_token;
+        res.render("events_final", allData);
+      });
     addUser.addUser(allData);
-
-    res.render("events_final", allData);
   });
 
   return router;
