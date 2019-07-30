@@ -32,9 +32,8 @@ CREATE TABLE rsvps (
 
 CREATE TABLE time_slots (
   id SERIAL PRIMARY KEY NOT NULL,
-  event_date DATE,
-  start_time TEXT ,
-  end_time TEXT,
+  start_date_time TIMESTAMP,
+  end_date_time TIMESTAMP,
   event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE
 );
 
