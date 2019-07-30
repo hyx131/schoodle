@@ -4,16 +4,6 @@ const { Pool } = require("pg");
 
 /*******************************MAILGUN BELOW******************************/
 
-// const mailgun = require("mailgun-js");
-// const mg = mailgun({ apiKey: api_key, domain: DOMAIN });
-
-// const data = {
-//   to: "acmhuang@gmail.com",
-//   from: "pineapple@no-reply.com",
-//   subject: "Pineapple Event",
-//   text: "Hello!"
-// };
-
 //HELPER FUNCTION , MOVE TO ANOTHER FILE
 
 const generateRandomString = function() {
