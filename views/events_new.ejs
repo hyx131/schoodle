@@ -77,16 +77,16 @@
         <div class='calendar'>
           <h3> (DROP DOWN) Choose Dates & Times </h3>
 
-          <section class='calendar_forms'>
+          <!-- <section class='calendar_forms'>
             <section class='date'>
               <div
                 id="pick_date"
                 name="eventDate">
               </div>
-            </section>
+            </section> -->
 
             <section class='time_slots'>
-              <!-- <p>Jul-25-2019</p>
+              <p>Jul-25-2019</p>
               <input
               type='text'
               id='start_time'
@@ -98,7 +98,7 @@
               id='end_time'
               name="endTime"
               placeholder='end time'
-              /> -->
+              />
             </section>
 
             <!-- <button type="submit" class="btn btn-primary">Continue</button> -->
@@ -138,12 +138,26 @@
 
     <!-- Client side jquery for calendar -->
     <script>
-      $("#pick_date").flatpickr({
+      // $("#pick_date").flatpickr({
+      //   mode: "multiple",
+      //   inline: true,
+      //   altInput: true,
+      //   altFormat: "F j, Y",
+      //   dateFormat: "Y-m-d",
+      //   "disable": [
+      //     function(date) {
+      //       let today = new Date();
+      //         today.setHours(0,0,0,0);
+      //         return (date < today); //disable past dates >> return true to disable
+      //     }
+      //   ]
+      // });
+      $("#start_time").flatpickr({
         mode: "multiple",
         inline: true,
         altInput: true,
-        altFormat: "F j, Y",
-        dateFormat: "Y-m-d",
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
         "disable": [
           function(date) {
             let today = new Date();
@@ -152,53 +166,37 @@
           }
         ]
       });
-      // $("#start_time").flatpickr({
-      //   mode: "multiple",
-      //   inline: true,
-      //   altInput: true,
-      //   enableTime: true,
-      //   altFormat: "F j, Y",
-      //   dateFormat: "Y-m-d",
-      //   "disable": [
-      //     function(date) {
-      //       let today = new Date();
-      //         today.setHours(0,0,0,0);
-      //         return (date < today); //disable past dates >> return true to disable
-      //     }
-      //   ]
-      // });
 
-      // $("#end_time").flatpickr({
-      //   mode: "multiple",
-      //   inline: true,
-      //   altInput: true,
-      //   enableTime: true,
-      //   altFormat: "F j, Y",
-      //   dateFormat: "Y-m-d",
-      //   "disable": [
-      //     function(date) {
-      //       let today = new Date();
-      //         today.setHours(0,0,0,0);
-      //         return (date < today); //disable past dates >> return true to disable
-      //     }
-      //   ]
-      // });
+      $("#end_time").flatpickr({
+        mode: "multiple",
+        inline: true,
+        altInput: true,
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        "disable": [
+          function(date) {
+            let today = new Date();
+              today.setHours(0,0,0,0);
+              return (date < today); //disable past dates >> return true to disable
+          }
+        ]
+      });
 
-      $(document).ready(function() {
-        $("#start_time").flatpickr({
-          inline: true,
-          enableTime: true,
-          noCalendar: true,
-          dateFormat: "H:i",
-        });
+      // $(document).ready(function() {
+      //   $("#start_time").flatpickr({
+      //     inline: true,
+      //     enableTime: true,
+      //     noCalendar: true,
+      //     dateFormat: "H:i",
+      //   });
 
-        $("#end_time").flatpickr({
-          inline: true,
-          enableTime: true,
-          noCalendar: true,
-          dateFormat: "H:i",
-        });
-      })
+      //   $("#end_time").flatpickr({
+      //     inline: true,
+      //     enableTime: true,
+      //     noCalendar: true,
+      //     dateFormat: "H:i",
+      //   });
+      // })
     </script>
 
   </body>
