@@ -2,22 +2,6 @@ const express = require("express");
 const router = express.Router();
 const addUser = require("./eventsNew");
 
-/******************************************************************************/
-// const mailgun = require("mailgun-js");
-// const mg = mailgun({
-//   apiKey: process.env.MAIL_GUN_PRIVATE_KEY,
-//   domain: process.env.MAIL_GUN_DOMAIN
-// });
-
-// const data = {
-//   to: "acmhuang@gmail.com",
-//   from: "pineapple@no-reply.com",
-//   subject: "Pineapple Event",
-//   text: "Hello!"
-// };
-
-/*********************************************************************************/
-
 module.exports = db => {
   router.get("/", (req, res) => {
     res.render("../views/events_final");
@@ -29,11 +13,6 @@ module.exports = db => {
       apiKey: process.env.MAIL_GUN_PRIVATE_KEY,
       domain: process.env.MAIL_GUN_DOMAIN
     });
-    console.log(
-      "mgcreds",
-      process.env.MAIL_GUN_PRIVATE_KEY,
-      process.env.MAIL_GUN_DOMAIN
-    );
 
     const dataOne = {
       to: req.body.invitesEmail,
@@ -42,8 +21,7 @@ module.exports = db => {
       text: "Hello!"
     };
     mg.messages().send(dataOne, function(error, body) {
-      console.log("mg-error", error);
-      console.log("mg-body", body);
+      console.log("completed invite emails sent!");
     });
 
     const allData = { users: {}, events: {}, time_slots: {} };
