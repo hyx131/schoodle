@@ -68,19 +68,34 @@ const addUser = function(database) {
     })
     .then(results => {
       console.log(results.rows[0]);
-      return pool.query(
-        `
-        INSERT INTO time_slots (start_date_time, end_date_time, event_id)
-        VALUES ($1, $2, $3) RETURNING *;
-      `,
-        [
-          database.time_slots.startTime,
-          database.time_slots.endTime,
-          results.rows[0].id
-        ]
-      );
-    })
 
+      // getting individual time values from the array of start & end times:
+
+        let startTime;
+        let endTime;
+
+        for (let i = 0; i < database.time_slots.startTime.length; i++) {
+          startTime = database.time_slots.startTime[i];
+          for (let k = 0; k < database.time_slots.endTime.length; k++) {
+            endTime = database.time_slots.endTime[k];
+
+            pool.query(
+              `
+              INSERT INTO time_slots (start_date_time, end_date_time, event_id)
+              VALUES ($1, $2, $3) RETURNING *;
+            `,
+              [
+                startTime,
+                endTime,
+                results.rows[0].id
+              ]
+            ).then(results => {
+              console.log(results.rows[0]);
+            });
+
+          }
+        }
+    })
     .then(results => {
       console.log(results.rows[0]);
     })

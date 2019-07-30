@@ -8,11 +8,15 @@ module.exports = db => {
   });
 
   router.post("/", (req, res) => {
+
+    console.log(req.body.times);
     const allData = { users: {}, events: {}, time_slots: {} };
 
-    // users
+    // users:
     allData.users.userName = req.body.userName ? req.body.userName : null;
     allData.users.userEmail = req.body.userEmail ? req.body.userEmail : null;
+
+    // events:
     allData.events.userEvent = req.body.userEvent ? req.body.userEvent : null;
     allData.events.eventDescription = req.body.eventDescription
       ? req.body.eventDescription
@@ -21,17 +25,17 @@ module.exports = db => {
       ? req.body.eventLocation
       : null;
 
-    // calendar
-    // allData.time_slots.eventDate = req.body.eventDate
-    //   ? req.body.eventDate
-    //   : null;
-    allData.time_slots.startTime = req.body.startTime
-      ? req.body.startTime
-      : null;
-    allData.time_slots.endTime = req.body.endTime ? req.body.endTime : null;
+    // timestamps from calendar input:
+    allData.time_slots.startTime = []; // array of startTime values
+    allData.time_slots.endTime = [];
+
+    for (let i of req.body.times) {
+      allData.time_slots.startTime.push(i.startTime ? i.startTime : null);
+      allData.time_slots.endTime.push(i.endTime ? i.endTime : null);
+    }
+
 
     addUser.addUser(allData);
-
     res.render("events_final", allData);
   });
 

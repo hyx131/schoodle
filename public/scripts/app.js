@@ -71,5 +71,80 @@ $(document).ready(function() {
 });
 */
 
+/************************* Ignore Previouse Codes For Now **************************/
+
+// helper function to add more times:
+// const createTimeSlots = function() {
+const addSlot = function (i) {
+  let slot = `<div>
+  <label for='start_time'>Start Time:</label>
+  <input
+  type='text'
+  class='start_time'
+  name="times[${i}][startTime]"
+  placeholder='start time'
+  />
+  <label for='end_time'>End Time:</label>
+  <input
+  type='text'
+  class='end_time'
+  name="times[${i}][endTime]"
+  placeholder='end time'
+  />
+  </div>`;
+
+  return slot;
+};
+
+//   return $slot;
+// };
+
+$(document).ready(function() {
+
+  $('#add_time').on("click", function(event) {
+    event.preventDefault();
+    addTimes();
+  })
+
+});
+
+var timesAdded = 0;
+const addTimes = function() {
+  timesAdded += 1;
+  let $slot = $(addSlot(timesAdded));
+  $('#add').append($slot);
+  flatpickrStyle($slot);
+}
+
+
+const flatpickrStyle = function ($el) {
+
+  $el.find(".start_time").flatpickr({
+    altInput: true,
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    "disable": [
+      function(date) {
+        let today = new Date();
+          today.setHours(0,0,0,0);
+          return (date < today);
+      }
+    ]
+  });
+
+  $el.find(".end_time").flatpickr({
+    altInput: true,
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    "disable": [
+      function(date) {
+        let today = new Date();
+          today.setHours(0,0,0,0);
+          return (date < today);
+      }
+    ]
+  });
+
+}
 
 
