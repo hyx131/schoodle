@@ -70,14 +70,13 @@ const addUser = function(database) {
       console.log(results.rows[0]);
       return pool.query(
         `
-        INSERT INTO time_slots (event_date, start_time, end_time, event_id)
-        VALUES ($1, $2, $3, $4) RETURNING *;
+        INSERT INTO time_slots (start_date_time, end_date_time, event_id)
+        VALUES ($1, $2, $3) RETURNING *;
       `,
         [
-          database.time_slots.eventDate,
           database.time_slots.startTime,
           database.time_slots.endTime,
-          results.rows[0]
+          results.rows[0].id
         ]
       );
     })
