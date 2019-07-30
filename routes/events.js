@@ -10,7 +10,7 @@ module.exports = db => {
   router.post("/", (req, res) => {
     const allData = { users: {}, events: {}, time_slots: {} };
 
-    // useres
+    // users
     allData.users.userName = req.body.userName ? req.body.userName : null;
     allData.users.userEmail = req.body.userEmail ? req.body.userEmail : null;
 
@@ -34,7 +34,7 @@ module.exports = db => {
 
     addUser.addUser(allData);
 
-    res.redirect("/events/new");
+    res.render("events_final", allData);
   });
 
   return router;

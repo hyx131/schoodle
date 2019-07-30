@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <!-- Meta Information -->
-  <title>Final Events</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <head>
+    <title>Event</title>
 
-  <!-- External Links -->
-  <% include ./partials/_indexLinks %>
-</head>
+    <!-- includes CSS/Bootstrap styles -->
+    <% include ./partials/_indexLinks %>
+  </head>
 
   <body>
     <header>
@@ -17,17 +14,19 @@
 
     <h1>DASHBOARD FOR EVENT RESULTS</h1>
 
-    <div><textarea class="Title">Title</textarea></div>
+    <div>
+      <h5>Description</h5>
 
-    <div><textarea class="Location">Location</textarea></div>
+      <textarea class="Title"><%= events.userEvent%></textarea>
+    </div>
 
-    <div><textarea class="Description">Description</textarea></div>
+    <div><textarea class="Location"><%= events.address %></textarea></div>
 
     <div>
-      <img
-        src="https://ugcorigin.s-microsoft.com/100/94bc52ad-c2fb-429b-abf6-52fd4ce103a4/200/v3/image.jpg"
-      />
+      <textarea class="Description"><%= events.eventDescription %></textarea>
     </div>
+
+    <div></div>
 
     <!-- includes Bootstrap/JQuery JS -->
     <% include ./partials/_indexScripts %>

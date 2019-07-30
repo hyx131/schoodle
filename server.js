@@ -12,7 +12,6 @@ const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
 
-
 // PG database client/connection setup
 
 const { Pool } = require("pg");
@@ -40,7 +39,6 @@ app.use(
   })
 );
 app.use(express.static("public"));
-
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -76,8 +74,6 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
-
