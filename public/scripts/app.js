@@ -1,3 +1,4 @@
+/*
 // helper function to generate new time slots:
 const createTimeSlots = function(date) {
   let $slot = `
@@ -76,7 +77,5 @@ $(document).ready(function() {
     }
   });
 
-  $("button").on("click", function() {
-    $("#add_slots").remove();
-  });
 });
+*/
