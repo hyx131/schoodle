@@ -2,12 +2,50 @@ const express = require("express");
 const router = express.Router();
 const addUser = require("./eventsNew");
 
+/******************************************************************************/
+// const mailgun = require("mailgun-js");
+// const mg = mailgun({
+//   apiKey: process.env.MAIL_GUN_PRIVATE_KEY,
+//   domain: process.env.MAIL_GUN_DOMAIN
+// });
+
+// const data = {
+//   to: "acmhuang@gmail.com",
+//   from: "pineapple@no-reply.com",
+//   subject: "Pineapple Event",
+//   text: "Hello!"
+// };
+
+/*********************************************************************************/
+
 module.exports = db => {
   router.get("/", (req, res) => {
     res.render("../views/events_final");
   });
 
   router.post("/", (req, res) => {
+    const mailgun = require("mailgun-js");
+    const mg = mailgun({
+      apiKey: process.env.MAIL_GUN_PRIVATE_KEY,
+      domain: process.env.MAIL_GUN_DOMAIN
+    });
+    console.log(
+      "mgcreds",
+      process.env.MAIL_GUN_PRIVATE_KEY,
+      process.env.MAIL_GUN_DOMAIN
+    );
+
+    const dataOne = {
+      to: req.body.invitesEmail,
+      from: req.body.userEmail,
+      subject: "Pineapple Event",
+      text: "Hello!"
+    };
+    mg.messages().send(dataOne, function(error, body) {
+      console.log("mg-error", error);
+      console.log("mg-body", body);
+    });
+
     const allData = { users: {}, events: {}, time_slots: {} };
 
     // users
