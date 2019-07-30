@@ -12,8 +12,16 @@
       <% include partials/_header %>
     </header>
 
-    <h1>DASHBOARD FOR EVENT RESULTS</h1>
-
+    <h5>Your Upcoming Event...</h5>
+    <p>Username</p>
+    <div>
+      <textarea class="creator"><%= users.userName %></textarea>
+      <textarea class="creator"><%= users.userEmail %></textarea>
+      <!-- 
+      <textarea id="adminToken" class="adminToken">
+<%= events.guest_token %></textarea
+      > -->
+    </div>
     <div>
       <h5>Description</h5>
 
@@ -27,9 +35,10 @@
     </div>
 
     <div>
-      <img
-        src="https://ugcorigin.s-microsoft.com/100/94bc52ad-c2fb-429b-abf6-52fd4ce103a4/200/v3/image.jpg"
-      />
+      <textarea class="time"><%= time_slots.startTime %> </textarea>
+    </div>
+    <div>
+      <textarea class="time"><%= time_slots.endTime %> </textarea>
     </div>
 
     <!-- includes Bootstrap/JQuery JS -->
