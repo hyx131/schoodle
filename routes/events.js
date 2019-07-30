@@ -3,8 +3,6 @@ const router = express.Router();
 const addUser = require("./eventsNew");
 const { Pool } = require("pg");
 
-<<<<<<< HEAD
-=======
 /******************************************************************************/
 // const mailgun = require("mailgun-js");
 // const mg = mailgun({
@@ -29,7 +27,6 @@ const pool = new Pool({
 
 /*********************************************************************************/
 
->>>>>>> tuesdayMorning
 module.exports = db => {
   router.get("/", (req, res) => {
     res.render("../views/events_final");
