@@ -79,12 +79,10 @@
 
           <section class='calendar_forms'>
             <section class='date'>
-              <input
-              type="text"
-              id="pick_date"
-              name="eventDate"
-              placeholder="Please select Date Time"
-              />
+              <div
+                id="pick_date"
+                name="eventDate">
+              </div>
             </section>
 
             <section class='time_slots'>
@@ -218,19 +216,21 @@
       //   ]
       // });
 
-      $("#start_time").flatpickr({
-        inline: true,
-        enableTime: true,
-        noCalendar: true,
-        dateFormat: "H:i",
-      });
+      $(document).ready(function() {
+        $("#start_time").flatpickr({
+          inline: true,
+          enableTime: true,
+          noCalendar: true,
+          dateFormat: "H:i",
+        });
 
-      $("#end_time").flatpickr({
-        inline: true,
-        enableTime: true,
-        noCalendar: true,
-        dateFormat: "H:i",
-      });
+        $("#end_time").flatpickr({
+          inline: true,
+          enableTime: true,
+          noCalendar: true,
+          dateFormat: "H:i",
+        });
+      })
     </script>
 
   </body>

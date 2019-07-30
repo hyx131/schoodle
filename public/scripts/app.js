@@ -2,6 +2,7 @@
 const createTimeSlots = function(date) {
   let $slot = `
   <p>${date}</p>
+  <form id='add_slots' action='/events' method='POST'>
   <label for='start_time'>Start Time:</label>
   <input
   type='text'
@@ -15,7 +16,9 @@ const createTimeSlots = function(date) {
   id='end_time'
   name="endTime"
   placeholder='end time'
-  />`;
+  />
+  </form>
+  <button>Close</button>`;
 
   return $slot;
 };
@@ -47,7 +50,6 @@ const getMonth = function(month) {
 
 // clicking 'onChange' event on calendar then render the 'time_slots' section:
 $(document).ready(function() {
-  console.log("zzzzzz");
   $("#pick_date").flatpickr({
     inline: true,
     onChange: function(selectedDates, dateStr, instance) {
@@ -58,6 +60,23 @@ $(document).ready(function() {
       const dateString = getMonth(month) + "/" + date + "/" + year;
 
       $(".time_slots").append(createTimeSlots(dateString));
+      $("#start_time").flatpickr({
+        inline: true,
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i"
+      });
+
+      $("#end_time").flatpickr({
+        inline: true,
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i"
+      });
     }
+  });
+
+  $("button").on("click", function() {
+    $("#add_slots").remove();
   });
 });
