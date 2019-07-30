@@ -14,6 +14,22 @@ const { Pool } = require("pg");
 //   text: "Hello!"
 // };
 
+//HELPER FUNCTION , MOVE TO ANOTHER FILE
+
+const generateRandomString = function() {
+  let result = "";
+  let randomText =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+  let randomTextLength = randomText.length;
+  for (let i = 0; i < 12; i++) {
+    result += randomText.charAt(Math.floor(Math.random() * randomTextLength));
+  }
+  return result;
+};
+
+const adminRandomKey = generateRandomString();
+const guestsRandomKey = generateRandomString();
+
 /*******************************MAILGUN ABOVE******************************/
 
 const pool = new Pool({
@@ -29,39 +45,41 @@ const addUser = function(database) {
   console.log(database);
 
   const text = "INSERT INTO users(name, email) VALUES($1, $2) RETURNING *";
-  pool.query(text, [database.users.userName, database.users.userEmail])
+  pool
+    .query(text, [database.users.userName, database.users.userEmail])
 
-  .then(results => {
-    console.log(results.rows[0]);
+    .then(results => {
+      console.log(results.rows[0]);
 
       return pool.query(
         `
         INSERT INTO events (name, address, description, admin_token, guest_token, user_id )
-        VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;
+        VALUES ($1, $2, $3, $4, $5,$6 ) RETURNING *;
         `,
         [
           database.events.userEvent,
           database.events.address,
           database.events.eventDescription,
-          "token",
-          "guest_token",
-          1
+          adminRandomKey,
+          guestsRandomKey,
+          results.rows[0].id
         ]
       );
     })
-
     .then(results => {
-
       console.log(results.rows[0]);
-      return pool.query(`
+      return pool.query(
+        `
         INSERT INTO time_slots (event_date, start_time, end_time, event_id)
         VALUES ($1, $2, $3, $4) RETURNING *;
-      `, [
-        database.time_slots.eventDate ,
-        database.time_slots.startTime,
-        database.time_slots.endTime,
-        1
-      ]);
+      `,
+        [
+          database.time_slots.eventDate,
+          database.time_slots.startTime,
+          database.time_slots.endTime,
+          results.rows[0]
+        ]
+      );
     })
 
     .then(results => {
