@@ -92,7 +92,7 @@ const addUser = function(database) {
             ).then(results => {
               console.log(results.rows[0]);
             });
-
+            break;
           }
         }
     })
