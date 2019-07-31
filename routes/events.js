@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { addUser, addEvent, addTimeSlots, getUserId, getEventId } = require("./eventsNew");
+const { addUser, addEvent, addTimeSlots } = require("./eventsNew");
 const pool = require("../db/dbPool");
 
 /*********************************************************************************/

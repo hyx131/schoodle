@@ -122,8 +122,6 @@ module.exports = {
   addUser: addUser,
   addEvent: addEvent,
   addTimeSlots: addTimeSlots,
-  getUserId: getUserId,
-  getEventId: getEventId,
   navigateToPage: function navigateToPage(db) {
     router.get("/", (req, res) => {
       res.render("../views/events_new");
