@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /****************** SASS CONFIGURATION *****************/
 
 app.use(
-  "/scss-styles",
+  "/styles",
   sass({
     src: __dirname + "/scss-styles",
     dest: __dirname + "/public/styles",
