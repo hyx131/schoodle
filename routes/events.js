@@ -42,6 +42,7 @@ module.exports = db => {
         let templateVars = data;
         console.log('Newly Created Event ', templateVars)
       console.log(data)
+      console.log(data.event.admin_token)
       res.redirect(`/events/${data.event.admin_token}`)
     });
   });

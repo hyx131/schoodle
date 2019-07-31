@@ -7,14 +7,17 @@ const pool = require("../db/dbPool");
 module.exports = db => {
   router.get("/:admin_token", (req, res) => {
 
-    return pool.query(`SELECT * FROM users`)
-    .then(results => {
-      console.log('RESULTS: ', results.rows[0])
-      res.render("../views/events_admin", results);
-    })
-  });
+    let adminToken = req.params.admin_token
+    console.log(adminToken)
 
-  router.post("/");
+  pool
+  .query(`SELECT users.*, events.*, time_slots.* FROM users JOIN events ON users.id = user_id JOIN time_slots ON event_id = events.id WHERE admin_token = '${adminToken}'`)
+  .then(results => {
+    console.log('********RESULT*******',results.rows[0])
 
+    res.render("../views/events_admin", results.rows[0]);
+    router.post("/");
+  })
+})
   return router;
 };

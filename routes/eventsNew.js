@@ -1,24 +1,25 @@
 const express = require("express");
 const router = express.Router();
 const { Pool } = require("pg");
+const { generateRandomString } = require('./helpers.js')
 
 /*******************************MAILGUN BELOW******************************/
 
 //HELPER FUNCTION , MOVE TO ANOTHER FILE
 
-const generateRandomString = function() {
-  let result = "";
-  let randomText =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
-  let randomTextLength = randomText.length;
-  for (let i = 0; i < 12; i++) {
-    result += randomText.charAt(Math.floor(Math.random() * randomTextLength));
-  }
-  return result;
-};
+// const generateRandomString = function() {
+//   let result = "";
+//   let randomText =
+//     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+//   let randomTextLength = randomText.length;
+//   for (let i = 0; i < 12; i++) {
+//     result += randomText.charAt(Math.floor(Math.random() * randomTextLength));
+//   }
+//   return result;
+// };
 
-const adminRandomKey = generateRandomString();
-const guestsRandomKey = generateRandomString();
+// const adminRandomKey = generateRandomString();
+// const guestsRandomKey = generateRandomString();
 
 /*******************************MAILGUN ABOVE******************************/
 
@@ -50,8 +51,8 @@ const addUser = function(database) {
           database.events.userEvent,
           database.events.address,
           database.events.eventDescription,
-          adminRandomKey,
-          guestsRandomKey,
+          generateRandomString(),
+          generateRandomString(),
           userResults.rows[0].id
         ]
       )
