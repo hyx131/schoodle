@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Pool } = require("pg");
-const { generateRandomString } = require('./helpers.js')
+const { generateRandomString } = require("./helpers.js");
 
 /*******************************MAILGUN BELOW******************************/
 
@@ -31,14 +31,14 @@ const pool = new Pool({
   port: 5432
 });
 
-
 // function to add to users table:
 const addUser = function(database) {
   console.log("WORKING");
   console.log(database);
 
   const text = "INSERT INTO users(name, email) VALUES($1, $2) RETURNING *";
-  return pool.query(text, [database.users.userName, database.users.userEmail])
+  return pool
+    .query(text, [database.users.userName, database.users.userEmail])
 
     .then(userResults => {
       console.log("uuuuuuuuuuuser results:", userResults.rows[0]);
@@ -46,38 +46,35 @@ const addUser = function(database) {
     })
     .catch(err => {
       console.log(err);
-    })
+    });
 };
 
-
-
-
 // function to add to events table:
-const addEvent = function(database, uId){
-  return pool.query(`
+const addEvent = function(database, uId) {
+  return pool
+    .query(
+      `
     INSERT INTO events (title, address, description, admin_token, guest_token, user_id)
     VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;
   `,
-  [
-    database.events.userEvent,
-    database.events.address,
-    database.events.eventDescription,
-    generateRandomString(),
-    generateRandomString(),
-    uId
-  ])
-  .then(eventResults => {
-    console.log("eeeeeeevents results:", eventResults.rows[0]);
-    return eventResults;
-  })
-  .catch((e) => console.log('dint work', e))
+      [
+        database.events.userEvent,
+        database.events.address,
+        database.events.eventDescription,
+        generateRandomString(),
+        generateRandomString(),
+        uId
+      ]
+    )
+    .then(eventResults => {
+      console.log("eeeeeeevents results:", eventResults.rows[0]);
+      return eventResults;
+    })
+    .catch(e => console.log("dint work", e));
 };
-
-
 
 // function to add multiple event-related time slots:
 const addTimeSlots = function(database, eId) {
-
   let startTime;
   let endTime;
   let arrTime = [];
@@ -89,34 +86,27 @@ const addTimeSlots = function(database, eId) {
     arrTime.push(addTime(startTime, endTime, eId));
   }
 
-  return Promise.all(arrTime).then((result) => {
+  return Promise.all(arrTime).then(result => {
     // console.log("---------allTimeSlot Results:", result);
     return result;
-  })
+  });
 };
-
-
 
 // function to add single time slot:
 const addTime = function(startTime, endTime, eId) {
-  return pool.query(
-    `
+  return pool
+    .query(
+      `
     INSERT INTO time_slots (start_date_time, end_date_time, event_id)
     VALUES ($1, $2, $3) RETURNING *;
   `,
-    [
-      startTime,
-      endTime,
-      eId
-    ]
-  ).then(timeSlotsResults => {
-    // console.log("zzzzzzzzzzzzzzzzz", timeSlotsResults.rows[0]);
-    return timeSlotsResults.rows[0];
-  });
-}
-
-
-
+      [startTime, endTime, eId]
+    )
+    .then(timeSlotsResults => {
+      // console.log("zzzzzzzzzzzzzzzzz", timeSlotsResults.rows[0]);
+      return timeSlotsResults.rows[0];
+    });
+};
 
 module.exports = {
   addUser: addUser,
