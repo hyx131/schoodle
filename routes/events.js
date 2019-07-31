@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const addUser = require("./eventsNew");
+const { addUser, addEvent, addTimeSlots, getUserId, getEventId } = require("./eventsNew");
 const pool = require("../db/dbPool");
 
 /*********************************************************************************/
@@ -44,13 +44,23 @@ module.exports = db => {
       allData.time_slots.endTime.push(i.endTime ? i.endTime : null);
     }
 
+    addUser(allData)
+    .then(userData => {
 
-    addUser.addUser(allData)
-    .then(data => {
-      let templateVars = data;
-      console.log('Newly Created Event ', templateVars)
-      res.redirect(`/events/${data.event.admin_token}`)
-    });
+      let userId = userData.rows[0].id;
+      // console.log('-------------UserId', userId);
+
+      addEvent(allData, userId)
+      .then(eventData => {
+        let eventId = eventData.rows[0].id;
+
+        // console.log("event data:", eventData);
+
+        addTimeSlots(allData, eventId).then(() => {
+          res.redirect(`/events/${eventData.rows[0].admin_token}`);
+        }).catch((e) => console.log('add time slots err',e))
+      }).catch((e) => console.log('add event err', e))
+    }).catch((e) => console.log('add user err', e))
 
   });
 
