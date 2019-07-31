@@ -63,7 +63,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 
 app.use("/events", eventsRoutes(db));
 app.use("/events/new", eventsNewRoutes.navigateToPage(db));
-app.use("/events/:admin_slug", eventsAdminRoutes(db));
+app.use("/events/", eventsAdminRoutes(db));
 app.use("/events/:public_slug", eventsPublicRoutes(db));
 
 // Home page

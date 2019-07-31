@@ -35,15 +35,15 @@ const addUser = function(database) {
   console.log(database);
 
   const text = "INSERT INTO users(name, email) VALUES($1, $2) RETURNING *";
-  pool
+  return pool
     .query(text, [database.users.userName, database.users.userEmail])
 
-    .then(results => {
-      console.log(results.rows[0]);
+    .then(userResults => {
+      console.log(userResults.rows[0]);
 
       return pool.query(
         `
-        INSERT INTO events (name, address, description, admin_token, guest_token, user_id )
+        INSERT INTO events (title, address, description, admin_token, guest_token, user_id )
         VALUES ($1, $2, $3, $4, $5,$6 ) RETURNING *;
         `,
         [
@@ -52,12 +52,11 @@ const addUser = function(database) {
           database.events.eventDescription,
           adminRandomKey,
           guestsRandomKey,
-          results.rows[0].id
+          userResults.rows[0].id
         ]
-      );
-    })
-    .then(results => {
-      console.log(results.rows[0]);
+      )
+    .then(eventsResults => {
+      console.log(eventsResults.rows[0]);
       return pool.query(
         `
         INSERT INTO time_slots (start_date_time, end_date_time, event_id)
@@ -66,17 +65,19 @@ const addUser = function(database) {
         [
           database.time_slots.startTime,
           database.time_slots.endTime,
-          results.rows[0].id
+          eventsResults.rows[0].id
         ]
-      );
-    })
+      )
+    .then(timeSlotsResults => {
+      console.log(timeSlotsResults.rows[0]);
 
-    .then(results => {
-      console.log(results.rows[0]);
+      return { user: userResults.rows[0], event: eventsResults.rows[0], timeSlots: timeSlotsResults.rows[0] }
     })
-    .catch(err => {
+      .catch(err => {
       console.log(err);
-    });
+      })
+    })
+  })
 };
 
 module.exports = {
@@ -88,25 +89,3 @@ module.exports = {
     return router;
   }
 };
-
-// function navigateToPage(db) {
-//   router.get("/", (req, res) => {
-//     res.render("../views/events_new");
-//   });
-// }
-
-//THIS IS THE ORIGINAL FILES module.exports code block, and the router post for mailgun works//
-// module.exports = db => {
-//   router.get("/", (req, res) => {
-//     res.render("../views/events_new");
-//   });
-// };
-//   router.post("/", (req, res) => {
-//     mg.messages().send(data, function(error, body) {
-//       console.log(body);
-//     });
-//     res.redirect("/events");
-//   });
-
-//   return router;
-// };

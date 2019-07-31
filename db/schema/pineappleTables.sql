@@ -14,7 +14,7 @@ CREATE TABLE users (
 
 CREATE TABLE events (
   id SERIAL PRIMARY KEY NOT NULL,
-  name TEXT NOT NULL,
+  title TEXT NOT NULL,
   description TEXT,
   address TEXT NOT NULL,
   admin_token TEXT NOT NULL,
