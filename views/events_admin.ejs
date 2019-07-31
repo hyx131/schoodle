@@ -27,11 +27,64 @@
 
       <textarea class="description">Description</textarea>
     </div>
+
+
+
+    <!-- Div for the choosing availability table -->
     <div>
-      <img
-        src="https://ugcorigin.s-microsoft.com/100/94bc52ad-c2fb-429b-abf6-52fd4ce103a4/200/v3/image.jpg"
-      />
+
+      <table border="1" style="width:100%">
+        <caption>Choose your time availability</caption>
+          <tr>
+            <th>Name:</th>
+            <th>Time Slot 1</th>
+            <th>Time Slot 2</th>
+            <th>Time Slot 3</th>
+          </tr>
+          <tr>
+            <td>Guest (form to enter name&email)</td>
+            <td><input type='checkbox' name='id 1' value='T/F'></td>
+            <td><input type='checkbox' name='id 2' value='T/F'></td>
+            <td><input type='checkbox' name='id 3' value='T/F'></td>
+          </tr>
+      </table>
+
     </div>
+
+    <!-- Div for the showing availability table with users -->
+    <div>
+
+      <table border="1" style="width:100%">
+        <tr>
+          <th>Name:</th>
+          <th>Time Slot 1</th>
+          <th>Time Slot 2</th>
+          <th>Time Slot 3</th>
+        </tr>
+        <tr>
+          <td>Guest 1 Name</td>
+          <td>T</td>
+          <td>T</td>
+          <td>F</td>
+        </tr>
+        <tr>
+          <td>Guest 2 Name</td>
+          <td>T</td>
+          <td>F</td>
+          <td>F</td>
+        </tr>
+          <tr>
+            <td>Guest 3 Name</td>
+            <td>F</td>
+            <td>T</td>
+            <td>T</td>
+          </tr>
+      </table>
+
+    </div>
+
+
+
     <div>
       <h1>Comments Area</h1>
       <form action="/events" method="POST">
