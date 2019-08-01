@@ -1,17 +1,6 @@
-.formClass {
+.form-button {
   display: flex;
-}
-
-.time-slots {
-  flex-direction: row;
-  margin-top: 2em;
-  margin-bottom: 2em;
-}
-
-.eventInfo {
-  display: flex;
-  flex-flow: column;
+  align-content: center;
+  flex-direction: column;
   align-items: center;
-  margin-top: 2em;
-  margin-bottom: 2em;
 }

@@ -1,7 +1,4 @@
 body {
-  background-color: #fff;
-  -webkit-animation: random 10s infinite;
-  animation: random 10s infinite;
 }
 @keyframes random {
   15% {
@@ -22,6 +19,9 @@ body {
 }
 
 .form-box {
+  background-color: #fff;
+  -webkit-animation: random 10s infinite;
+  animation: random 10s infinite;
   background-size: contain;
   overflow: hidden;
   position: absolute;
@@ -48,6 +48,7 @@ body {
     background-color: #4eb5f1;
     text-align: center;
     transition: all 0.2s;
+    cursor: pointer;
   }
 
   .btn-btn-primary {
