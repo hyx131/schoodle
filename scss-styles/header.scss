@@ -57,3 +57,20 @@
 //   padding-top: 3px;
 //   width: 100px;
 // }
+
+.admin-event-information-sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 45px;
+  font-family: "Open Sans Condensed", sans-serif;
+  padding-top: 250px;
+  padding-bottom: 85px;
+}
+.top-event-name {
+  font-weight: bold;
+}
+.admin-page-event-img {
+  width: 45px;
+  height: 45px;
+}
