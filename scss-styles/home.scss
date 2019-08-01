@@ -1,13 +1,40 @@
+body {
+@keyframes random {
+  15% {
+    background-color: #729ea1;
+  }
+  30% {
+    background-color: #b5bd89;
+  }
+  45% {
+    background-color: #dfbe99;
+  }
+  60% {
+    background-color: #ec9192;
+  }
+  75% {
+    background-color: #db5375;
+  }
+  }
+}
+
 .form-box {
-  background-image: url("../public/docs/home_bkg_pic.jpg");
+  background-color: #fff;
+  -webkit-animation: random 10s infinite;
+  animation: random 10s infinite;
   background-size: contain;
   overflow: hidden;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  font-family: "futura";
+  font-weight: 700;
+  font-size: 30px;
+
   .btn-btn-primary {
     display: inline-block;
     padding: 0.3em 1.2em;
@@ -15,7 +42,7 @@
     border-radius: 2em;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: "Roboto";
+    font-family: "futura";
     font-weight: 300;
     color: #ffffff;
     background-color: #4eb5f1;

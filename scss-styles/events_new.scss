@@ -1,15 +1,74 @@
+
+.events-new {
+  margin: 0 auto;
+  height: 100%;
+  background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+}
+
+.form-button {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  align-items: center;
+  text-align: center;
+  display: inline-grid;
+
+}
+
+button#add_time {
+  border-radius: 50px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+}
+
 .formClass {
   display: flex;
 }
+
 .time-slots {
   flex-direction: row;
   margin-top: 2em;
   margin-bottom: 2em;
+  align-items: center;
+  text-align: center;
 }
+
 .eventInfo {
   display: flex;
   flex-flow: column;
   align-items: center;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  display: inline-block;
+}
+
+.event-information-container {
+  border: none;
+  border-bottom: 2px solid red;
+  margin: 0 auto;
+  width: 50%;
+  background-color: white;
+  border-radius: 3em;
+  -webkit-box-shadow: 9px 5px 32px 0px rgba(0,0,0,0.47);
+  -moz-box-shadow: 9px 5px 32px 0px rgba(0,0,0,0.47);
+  box-shadow: 9px 5px 32px 0px rgba(0,0,0,0.47);
+}
+
+input.form-control {
+  border: none;
+  border-bottom: 2px solid black;
+  border-radius: 0;
+
+}
+
+input.start_time {
+  background: transparent;
 }

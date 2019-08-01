@@ -8,22 +8,21 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
-​
+
     <!-- External Links -->
     <% include ./partials/_indexLinks %>
   </head>
-​
-  <body>
+
+  <body class="events-new">
     <header>
       <% include ./partials/_header %>
     </header>
 ​
     <!-- /* Move all the styling over to the SCSS FILE, these are just here for visual purposes */ -->
-    <main class="event-information-container" style="margin: 1em;">
-      <form action="/events" method="POST">
+    <main class="event-information-container">
+      <form class="form-button" action="/events" method="POST">
         <div class="eventInfo">
-          <h3>Event Information</h3>
-​
+          <h2>Event Information</h2>
           <label for="name">First Name Last Name</label>
           <input
             class="form-control"
@@ -32,7 +31,6 @@
             placeholder="Enter here"
             style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
           />
-​
           <label for="email">Email</label>
           <input
             class="form-control"
@@ -41,7 +39,6 @@
             placeholder="Enter here"
             style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
           />
-​
           <label for="title">Event Title</label>
           <input
             class="form-control"
@@ -50,7 +47,6 @@
             placeholder="Enter here"
             style="width: 300px; margin: 0em; margin-top: em; margin-bottom: 1em"
           />
-​
           <label for="description"> Event Description</label>
           <input
             class="form-control"
@@ -59,7 +55,6 @@
             placeholder="Enter here"
             style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
           />
-​
           <label for="location">Event Location</label>
           <input
             class="form-control"
@@ -69,16 +64,12 @@
             style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
           />
         </div>
-​
-        <section class="time_slots">
-          <h3>(DROP DOWN) Choose Dates & Times</h3>
-          <section id="add"></section>
-          <button id="add_time">+ Add More Times</button>
+        <section class="time_slots" style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em">
+          <section id="add" style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"></section>
+          <button id="add_time" style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em">+ TIMES</button>
         </section>
-​
-        <h3>DROP DOWN EFFECT - Who Do You Want To Invite? -</h3>
-​
-        <label for="invites">Invite Attendees</label>
+
+        <label for="invites"><h2>Invite Attendees</h2></label>
         <input
           class="form-control"
           type="invites"
@@ -107,8 +98,6 @@
           placeholder="Enter email here"
           style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
         />
-​
-        <h1>DROP DOWN EFFECT <b>INVITES</b></h1>
 ​
         <label for="invites">Invites</label>
         <input
@@ -118,11 +107,12 @@
           placeholder="Enter Email Here"
           style="width: 300px; margin: 1em"
         />
-​
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 2em;
+        margin-bottom: 2em">Submit</button>
       </form>
     </main>
-​
+
     <!-- includes Bootstrap/JQuery JS -->
     <% include ./partials/_indexScripts %>
 ​
