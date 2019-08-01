@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Meta Information -->
-    <title>Admin Events</title>
+    <title>Events</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -11,45 +11,75 @@
 
     <!-- External Links -->
     <% include ./partials/_indexLinks %>
+    <% include ./partials/_indexScripts %>
+
   </head>
 
+
+
   <body>
+
+    <button class="btn btn-primary">something</button>
     <header>
       <% include partials/_header %>
     </header>
-    <div>
-      <h1>EVENTS ADMIN EDIT PAGE</h1>
-    </div>
-    <div>
-      <textarea class="title"><%= name %></textarea>
 
-      <textarea class="location"><%= address %></textarea>
 
-      <textarea class="description"><%= description %></textarea>
+
+    <div>
+      <h1><%=data[0].title%></h1>
     </div>
+
+    <div>
+      <h5>About this event...</h5>
+      <p class='event_description'><%=data[0].description%></p>
+
+      <h5>Location:</h5>
+      <p class="location"><%= data[0].address %></p>
+    </div>
+
+
+
+   <!-- Dive with form to fill in user name and email -->
+   <div>
+    <form action= <%= `/events/${data[0].admin_token}` %> method='POST'>
+      <label for='name'>Name:</label>
+        <input type='text' name='name' placeholder="Name">
+
+      <label for='email'>Email Adress:</label>
+        <input type='email' name='email' placeholder="Email">
+
+      <button type="submit" class='admin-down-button'></button>
+    </form>
+   </div>
+
 
 
 
     <!-- Div for the choosing availability table -->
-    <div>
+      <% for (let i = 0; i < data.length; i++) { %>
+        <div class="time-slots-check-box">
+          <div class="form-check">
+            <input
+              id="checkbox[]"
+              type="checkbox"
+              value="T/F"
+            />
+            <% if (moment(data[i].start_date_time).format("MM/DD/YY") === moment(data[i].start_end_time).format("MM/DD/YY")) { %>
+            <label class="form-check-label" for="defaultCheck1">
+              <%= moment(data[i].start_date_time).format("MM/DD/YY")%>
+            </label>
+            <p><%= `${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].start_end_time).format("hh:mm A")}` %> </p>
+            <% } else { %>
+              <label class="form-check-label" for="defaultCheck1">
+                  <%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].start_end_time).format("MM/DD/YY")} ${moment(data[i].start_end_time).format("hh:mm A")}` %>
+              </label>
+            <% } %>
+          </div>
+      </div>
+    <% } %>
 
-      <table border="1" style="width:100%">
-        <caption>Choose your time availability</caption>
-          <tr>
-            <th>Name:</th>
-            <th>Time Slot 1</th>
-            <th>Time Slot 2</th>
-            <th>Time Slot 3</th>
-          </tr>
-          <tr>
-            <td>Guest (form to enter name&email)</td>
-            <td><input type='checkbox' name='id 1' value='T/F'></td>
-            <td><input type='checkbox' name='id 2' value='T/F'></td>
-            <td><input type='checkbox' name='id 3' value='T/F'></td>
-          </tr>
-      </table>
 
-    </div>
 
     <!-- Div for the showing availability table with users -->
     <div>
@@ -57,12 +87,17 @@
       <table border="1" style="width:100%">
         <tr>
           <th>Name:</th>
-          <th>Time Slot 1</th>
-          <th>Time Slot 2</th>
-          <th>Time Slot 3</th>
+          <% for (let i = 0; i < data.length; i++) { %>
+            <% if (moment(data[i].start_date_time).format("MM/DD/YY") === moment(data[i].start_end_time).format("MM/DD/YY")) { %>
+          <th><%= `${moment(data[i].start_date_time).format("MM/DD/YY")}
+            ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].start_end_time).format("hh:mm A")}` %></th>
+            <%} else {%>
+          <th><%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].start_end_time).format("MM/DD/YY")} ${moment(data[i].start_end_time).format("hh:mm A")}` %></th>
+            <% } %>
+          <% } %>
         </tr>
         <tr>
-          <td>Guest 1 Name</td>
+          <td><%= data[0].name %></td>
           <td>T</td>
           <td>T</td>
           <td>F</td>
@@ -102,7 +137,9 @@
       </form>
     </div>
 
+
     <!-- includes Bootstrap/JQuery JS -->
-    <% include ./partials/_indexScripts %>
+    <!-- <% include ./partials/_indexScripts %> -->
+
   </body>
 </html>

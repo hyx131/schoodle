@@ -77,6 +77,7 @@
         </div>
       </div>
 
+      <!-- Calendar Div -->
       <div class='calendar'>
         <h3> (DROP DOWN) Choose Dates & Times </h3>
 
@@ -86,54 +87,18 @@
           </section>
       </div>
 
-      <div>
-        <h3>DROP DOWN EFFECT - Who Do You Want To Invite? -</h3>
 
-        <div>
-          <label for="invites">Invite Attendees</label>
-          <input
-            class="form-control"
-            type="invites"
-            name="invites"
-            placeholder="Enter email here"
-            style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
-          />
-          <input
-            class="form-control"
-            type="invites"
-            name="invites"
-            placeholder="Enter email here"
-            style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
-          />
-          <input
-            class="form-control"
-            type="invites"
-            name="invites"
-            placeholder="Enter email here"
-            style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
-          />
-          <input
-            class="form-control"
-            type="invites"
-            name="invites"
-            placeholder="Enter email here"
-            style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
-          />
-        </div>
+
+      <!-- Calendar Div -->
+      <div class='invites'>
+        <h3> Invite Email </h3>
+
+          <section class='email_slots'>
+            <section id='add_mail'></section>
+            <button id='add_email'>+ Add More Invites</button>
+          </section>
       </div>
 
-      <div>
-        <h1>DROP DOWN EFFECT <b>INVITES</b></h1>
-
-        <label for="invites">Invites</label>
-        <input
-          class="form-control"
-          type="text"
-          name="invites"
-          placeholder="Enter Email Here"
-          style="width: 300px; margin: 1em"
-        />
-      </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>
       </form>
@@ -148,6 +113,7 @@
     <!-- Client side jquery for calendar -->
     <script>
       addTimes();
+      addEmail();
     </script>
 
   </body>
