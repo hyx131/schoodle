@@ -3,15 +3,16 @@
 //   border: red solid 1px;
 // }
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+// body {
+//   margin: 0;
+//   font-family: Arial, Helvetica, sans-serif;
+// }
 
 .header {
   overflow: hidden;
-  background-color: transparent;
+  background-color: white;
   padding: 20px 10px;
+  font-family: "futura";
 }
 
 .header a {
@@ -50,4 +51,9 @@ body {
   .header-right {
     float: none;
   }
+}
+
+.pineapple-img {
+  padding-top: 3px;
+  width: 100px;
 }

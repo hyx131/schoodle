@@ -1,4 +1,4 @@
-body {
+
 @keyframes random {
   15% {
     background-color: #729ea1;
@@ -16,7 +16,6 @@ body {
     background-color: #db5375;
   }
   }
-}
 
 .form-box {
   background-color: #fff;
@@ -48,6 +47,7 @@ body {
     background-color: #4eb5f1;
     text-align: center;
     transition: all 0.2s;
+    cursor: pointer;
   }
   .btn-btn-primary {
     background-color: #4095c6;
