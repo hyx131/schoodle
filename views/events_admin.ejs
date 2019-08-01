@@ -21,19 +21,6 @@
     </header>
 
 
-<<<<<<< HEAD
-    <div>
-      <h1><%=data[0].title%></h1>
-    </div>
-
-    <div>
-      <h5>About this event...</h5>
-      <p class='event_description'><%=data[0].description%></p>
-
-      <h5>Location:</h5>
-      <p class="location"></p>
-    </div>
-=======
     <div class="admin-header-event-information-sec">
       <h1 class="header-event-name"><%=data[0].title%></h1>
       <div>
@@ -46,7 +33,6 @@
           <label for="host-name"> <b>Host:</b></label>
           <span class="host-name"><%= data[0].name %></span>
         </div>
->>>>>>> fix-master
 
 
         <div>
@@ -59,7 +45,6 @@
             <span class="event-location"><%= data[0].address %></span>
           </div>
 
-<<<<<<< HEAD
    <!-- Dive with form to fill in user name and email -->
    <div class='wrong_email_error'>
     <p>Wrong Email!</p>
@@ -69,8 +54,6 @@
     <form action= <%= `/events/${data[0].admin_token}` %> method='POST'>
       <label for='name'>Name:</label>
         <input type='text' name='name' placeholder="Name">
-=======
->>>>>>> fix-master
 
           <div>
               <img
@@ -106,9 +89,7 @@
       <p><b>Please fill in your information...</b></p>
     </div>
 
-<<<<<<< HEAD
       <button id='guestInfo' type="submit" class='admin-down-button'></button>
-=======
     <form class="form-box-final" method='POST' action= <%= `/events/${data[0].admin_token}` %> >
 <div >
       <label for='name'></label>
@@ -121,7 +102,6 @@
       <div>
       <button type="submit" class='check-button'></button>
     </div>
->>>>>>> fix-master
     </form>
     <div>
         <a href="#anchor-two">
