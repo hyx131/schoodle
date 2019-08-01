@@ -4,35 +4,29 @@
   height: 100%;
   background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
 }
-
 .form-button {
   display: flex;
   align-content: center;
   flex-direction: column;
   align-items: center;
 }
-
 section {
   align-items: center;
   text-align: center;
   display: inline-grid;
 }
-
 button#add_time {
   border-radius: 50px;
 }
-
 h2 {
   text-align: center;
   font-size: 2rem;
   margin-top: 1em;
   margin-bottom: 1em;
 }
-
 .formClass {
   display: flex;
 }
-
 .time-slots {
   flex-direction: row;
   margin-top: 2em;
@@ -40,14 +34,12 @@ h2 {
   align-items: center;
   text-align: center;
 }
-
 .eventInfo {
   display: flex;
   flex-flow: column;
   align-items: center;
   display: inline-block;
 }
-
 .event-information-container {
   border: none;
   border-bottom: 2px solid red;
@@ -60,13 +52,67 @@ h2 {
   -moz-box-shadow: 9px 5px 32px 0px rgba(0, 0, 0, 0.47);
   box-shadow: 9px 5px 32px 0px rgba(0, 0, 0, 0.47);
 }
-
 input.email_guest {
   border: none;
   border-bottom: 2px solid black;
   border-radius: 0;
 }
-
 input.start_time {
   background: transparent;
+}
+#add_email {
+  border-radius: 50px;
+  width: 300px;
+  margin: 0em;
+  margin-top: 0em;
+  margin-bottom: 1em;
+}
+input.email_guest {
+  border: none;
+  border-bottom: 2px solid black;
+  border-radius: 0;
+  margin-bottom: 20px;
+  width: 300px;
+  margin: 0em;
+  margin-top: 0em;
+  margin-bottom: 1em;
+}
+input.form-control {
+  width: 300px;
+  margin: 0em;
+  margin-top: 0em;
+  margin-bottom: 1em;
+  border: none;
+  border-bottom: 2px solid black;
+  border-radius: 0;
+}
+label {
+  font-weight: bolder;
+}
+h3 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+.invite-button {
+  padding: 10px 80px 10px 80px;
+  border-radius: 60px;
+  background-color: #48c6ef;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.button-style {
+  border-radius: 50px;
+}
+.pencil-img {
+  display: block;
+  margin: 0 auto;
+}
+.mailbox-img {
+  display: block;
+  margin: 0 auto;
+}
+.clock-img {
+  display: block;
+  margin: 0 auto;
 }
