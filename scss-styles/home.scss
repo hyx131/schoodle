@@ -1,4 +1,5 @@
 .form-box {
+  background-image: url("../public/docs/home_bkg_pic.jpg");
   background-size: contain;
   overflow: hidden;
   position: absolute;
@@ -7,10 +8,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  font-family: "futura";
-  font-weight: 700;
-  font-size: 30px;
   .btn-btn-primary {
     display: inline-block;
     padding: 0.3em 1.2em;
@@ -18,7 +15,7 @@
     border-radius: 2em;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: "futura";
+    font-family: "Roboto";
     font-weight: 300;
     color: #ffffff;
     background-color: #4eb5f1;
