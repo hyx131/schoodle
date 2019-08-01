@@ -1,0 +1,35 @@
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  font-family: "Open Sans Condensed", sans-serif;
+  padding-top: 1em;
+  padding-bottom: 2.5em;
+  padding-left: 4em;
+  padding-right: 4em;
+  top: 0px;
+  width: 100%;
+  position: fixed;
+  border-bottom: 2px solid red;
+  z-index: 7;
+}
+
+#home-button {
+  color: black;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+#create-button {
+  color: black;
+  font-size: 25px;
+  margin-left: 60px;
+}
+
+#logo-pic {
+  margin-left: 100px;
+  width: 100px;
+  height: 100px;
+}
