@@ -23,7 +23,9 @@
       <form class="form-button" action="/events" method="POST">
         <div class="eventInfo">
           <h2>Event Information</h2>
-          <label for="name">First Name Last Name</label>
+          <img src ="/images/neonpencil.png">
+        </br>
+          <label for="name" class="pencil-img">First Name Last Name</label>
           <input
             class="form-control"
             type="userName"
@@ -68,28 +70,38 @@
 
       <!-- Calendar Div -->
       <div class='calendar'>
-        <h3> (DROP DOWN) Choose Dates & Times </h3>
-
-          <section class='time_slots'>
-            <section id='add'></section>
-            <button id='add_time'>+ Add More Times</button>
-          </section>
+        <section
+        class="time_slots"
+        style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+        >
+        <img src="/images/clock.png" class = "clock-img">
+        <section
+          id="add"
+          style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+        ></section>
+        <button
+          id="add_time"
+          style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+        >
+          + TIMES
+        </button>
+      </section>
       </div>
 
 
 
       <!-- Calendar Div -->
       <div class='invites'>
-        <h3> Invite Email </h3>
-
+        <h2> Invite Attendees </h2>
+        <img src="/images/mailbox.png" class="mailbox-img">
           <section class='email_slots'>
             <section id='add_mail'></section>
-            <button id='add_email'>+ Add More Invites</button>
+            <button id='add_email' class = "button-style">+ Add More Invites</button>
           </section>
       </div>
 
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="invite-button">Submit</button>
       </form>
     </main>
 
