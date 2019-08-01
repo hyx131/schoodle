@@ -6,23 +6,24 @@ const pool = require("../db/dbPool");
 /*********************************************************************************/
 
 module.exports = db => {
-
   router.post("/", (req, res) => {
     const mailgun = require("mailgun-js");
     const mg = mailgun({
       apiKey: process.env.MAIL_GUN_PRIVATE_KEY,
       domain: process.env.MAIL_GUN_DOMAIN
     });
+    /***************************************************************************** */
 
-    const dataOne = {
-      to: req.body.invitesEmail,
-      from: req.body.userEmail,
-      subject: "Pineapple Event",
-      text: "Hello!"
-    };
-    mg.messages().send(dataOne, function(error, body) {
-      console.log("completed invite emails sent!");
-    });
+    // const dataOne = {
+    //   to: req.body.invitesEmail,
+    //   from: req.body.userEmail,
+    //   subject: "Pineapple Event",
+    //   text: "Hello!"
+    // };
+    // mg.messages().send(dataOne, function(error, body) {
+    //   console.log("completed invite emails sent!");
+    // });
+    /***************************************************************************** */
 
     const allData = { users: {}, events: {}, time_slots: {} };
 
@@ -32,8 +33,12 @@ module.exports = db => {
 
     // events:
     allData.events.userEvent = req.body.userEvent ? req.body.userEvent : null;
-    allData.events.eventDescription = req.body.eventDescription ? req.body.eventDescription : null;
-    allData.events.address = req.body.eventLocation ? req.body.eventLocation : null;
+    allData.events.eventDescription = req.body.eventDescription
+      ? req.body.eventDescription
+      : null;
+    allData.events.address = req.body.eventLocation
+      ? req.body.eventLocation
+      : null;
 
     // timestamps from calendar input:
     allData.time_slots.startTime = []; // array of startTime values
@@ -45,23 +50,39 @@ module.exports = db => {
     }
 
     addUser(allData)
-    .then(userData => {
+      .then(userData => {
+        let userId = userData.rows[0].id;
+        // console.log('-------------UserId', userId);
 
-      let userId = userData.rows[0].id;
-      // console.log('-------------UserId', userId);
+        addEvent(allData, userId)
+          .then(eventData => {
+            let eventId = eventData.rows[0].id;
 
-      addEvent(allData, userId)
-      .then(eventData => {
-        let eventId = eventData.rows[0].id;
+            /*********************************************************************************************** */
 
-        // console.log("event data:", eventData);
+            const dataOne = {
+              to: req.body.invitesEmail,
+              from: req.body.userEmail,
+              subject: "Pineapple Event",
+              text: `Hello! You have been invited too http://localhost:8080/events/${
+                eventData.rows[0].admin_token
+              }`
+            };
+            mg.messages().send(dataOne, function(error, body) {
+              console.log("completed invite emails sent!");
+            });
 
-        addTimeSlots(allData, eventId).then(() => {
-          res.redirect(`/events/${eventData.rows[0].admin_token}`);
-        }).catch((e) => console.log('add time slots err',e))
-      }).catch((e) => console.log('add event err', e))
-    }).catch((e) => console.log('add user err', e))
+            /*********************************************************************************************** */
 
+            addTimeSlots(allData, eventId)
+              .then(() => {
+                res.redirect(`/events/${eventData.rows[0].admin_token}`);
+              })
+              .catch(e => console.log("add time slots err", e));
+          })
+          .catch(e => console.log("add event err", e));
+      })
+      .catch(e => console.log("add user err", e));
   });
 
   return router;
