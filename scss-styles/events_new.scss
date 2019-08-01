@@ -20,6 +20,13 @@ section {
 
 button#add_time {
   border-radius: 50px;
+
+}
+
+.invite-button {
+    padding: 10px 80px 10px 80px;
+    border-radius: 60px;
+    background-color: #48c6ef;
 }
 
 h2 {
@@ -27,6 +34,7 @@ h2 {
   font-size: 2rem;
   margin-top: 1em;
   margin-bottom: 1em;
+  font-weight: bolder;
 }
 
 .formClass {
@@ -39,6 +47,7 @@ h2 {
   margin-bottom: 2em;
   align-items: center;
   text-align: center;
+
 }
 
 .eventInfo {
@@ -65,8 +74,14 @@ input.form-control {
   border: none;
   border-bottom: 2px solid black;
   border-radius: 0;
+
 }
 
 input.start_time {
   background: transparent;
+}
+
+label {
+  font-weight: bolder;
+
 }
