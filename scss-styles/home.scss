@@ -1,20 +1,37 @@
-
-.main-header {
+.form-box {
+  background-size: contain;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
   height: 100%;
-  position: relative;
-}
-
-.container {
-  max-width: 50%;
-}
-
-.container {
-  max-width: 50%;
-}
-
-.create-button {
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "futura";
+  font-weight: 700;
+  font-size: 30px;
+  .btn-btn-primary {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "futura";
+    font-weight: 300;
+    color: #ffffff;
+    background-color: #4eb5f1;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .btn-btn-primary {
+    background-color: #4095c6;
+  }
+  @media all and (max-width: 30em) {
+    .btn-btn-primary {
+      display: block;
+      margin: 0.2em auto;
+    }
+  }
 }

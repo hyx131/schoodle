@@ -8,11 +8,11 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
-
+​
     <!-- External Links -->
     <% include ./partials/_indexLinks %>
   </head>
-
+​
   <body>
     <header>
       <% include partials/_header %>
@@ -22,17 +22,17 @@
     </div>
     <div>
       <textarea class="title"><%= name %></textarea>
-
+​
       <textarea class="location"><%= address %></textarea>
-
+​
       <textarea class="description"><%= description %></textarea>
     </div>
-
-
-
+​
+​
+​
     <!-- Div for the choosing availability table -->
     <div>
-
+​
       <table border="1" style="width:100%">
         <caption>Choose your time availability</caption>
           <tr>
@@ -48,12 +48,12 @@
             <td><input type='checkbox' name='id 3' value='T/F'></td>
           </tr>
       </table>
-
+​
     </div>
-
+​
     <!-- Div for the showing availability table with users -->
     <div>
-
+​
       <table border="1" style="width:100%">
         <tr>
           <th>Name:</th>
@@ -80,11 +80,11 @@
             <td>T</td>
           </tr>
       </table>
-
+​
     </div>
-
-
-
+​
+​
+​
     <div>
       <h1>Comments Area</h1>
       <form action="/events" method="POST">
@@ -101,7 +101,7 @@
         <input type="submit" value="Submit" />
       </form>
     </div>
-
+​
     <!-- includes Bootstrap/JQuery JS -->
     <% include ./partials/_indexScripts %>
   </body>

@@ -2,16 +2,16 @@
 <html lang="en">
   <head>
     <title>Event</title>
-
+​
     <!-- includes CSS/Bootstrap styles -->
     <% include ./partials/_indexLinks %>
   </head>
-
+​
   <body>
     <header>
       <% include partials/_header %>
     </header>
-
+​
     <h5>Your Upcoming Event...</h5>
     <p>Username</p>
     <div>
@@ -24,23 +24,23 @@
     </div>
     <div>
       <h5>Description</h5>
-
+​
       <textarea class="Title"><%= events.userEvent%></textarea>
     </div>
-
+​
     <div><textarea class="Location"><%= events.address %></textarea></div>
-
+​
     <div>
       <textarea class="Description"><%= events.eventDescription %></textarea>
     </div>
-
+​
     <div>
       <textarea class="time"><%= time_slots.startTime %> </textarea>
     </div>
     <div>
       <textarea class="time"><%= time_slots.endTime %> </textarea>
     </div>
-
+​
     <!-- includes Bootstrap/JQuery JS -->
     <% include ./partials/_indexScripts %>
   </body>
