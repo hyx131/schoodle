@@ -1,3 +1,5 @@
+
+
 /*
 // helper function to generate new time slots:
 const createTimeSlots = function(date) {
@@ -155,5 +157,72 @@ const flatpickrStyle = function ($el) {
   });
 
 }
+/********************************** Add Guest Email ***********************************/
 
+const addEmailSlot = function(i) {
+  let mail = `
+    <div>
+      <input
+        type='email'
+        class='email_guest'
+        name='guestMail[${i}]'
+        placeholder='Enter Email Here'
+      />
+    </div>
+  `
+  return mail;
+}
+
+
+var mailsAdded = 0;
+const addEmail = function() {
+  mailsAdded += 1;
+  let $mail = $(addEmailSlot(mailsAdded));
+  $('#add_mail').append($mail);
+}
+
+
+$(document).ready(function() {
+
+  $('#add_email').on("click", function(event) {
+    event.preventDefault();
+    addEmail();
+  })
+
+});
+
+
+
+
+
+/*********************************** Add time slot table into events_admin.ejs ***********************************/
+
+
+
+// $(document).ready(function() {
+
+// const addSlotTable = function (i) {
+//   let checkBoxRow = `
+//   <tr>
+//     <th>${moment(data[i].start_date_time).format("MM/DD/YY")}</th>
+//   </tr>
+//   <tr>
+//     <td><input type='checkbox' name='${data[i].user_id}'></td>
+//   </tr>`;
+
+//   return checkBoxRow;
+// };
+
+
+// const addTimeTable = function(data) {
+//   for (let i = 0; i < data.length; i++) {
+//     let $checkBoxRow = $(addSlotTable(i));
+//     $('#add_slot_table').append($checkBoxRow);
+//   }
+// }
+
+
+
+
+// });
 

@@ -11,6 +11,8 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
+const moment = require('moment');
+app.locals.moment = moment;
 
 // PG database client/connection setup
 

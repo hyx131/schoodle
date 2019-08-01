@@ -36,6 +36,18 @@ module.exports = db => {
       allData.time_slots.endTime.push(i.endTime ? i.endTime : null);
     }
 
+
+    // insert guest email into database;
+    for (let i of req.body.guestMail) {
+      const TEXT = "INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *"
+
+      pool.query(TEXT, [null, i]).then((guestMailResults) => {
+        console.log("----MAIL----", guestMailResults);
+      }).catch((e) => console.log('add guest email err',e))
+
+      console.log("--------------", i);
+    }
+
     addUser(allData)
       .then(userData => {
         let userId = userData.rows[0].id;

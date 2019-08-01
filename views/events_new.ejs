@@ -64,41 +64,32 @@
             style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
           />
         </div>
-        <section
-          class="time_slots"
-          style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
-        >
-          <section
-            id="add"
-            style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
-          ></section>
-          <button
-            id="add_time"
-            style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
-          >
-            + TIMES
-          </button>
-        </section>
+      </div>
 
-        <label for="invites"><h2>Invite Attendees</h2></label>
-        <input
-          class="email_guest"
-          type="email"
-          name="guestMail[${i}]"
-          placeholder="Enter email here"
-          style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
-        />
+      <!-- Calendar Div -->
+      <div class='calendar'>
+        <h3> (DROP DOWN) Choose Dates & Times </h3>
 
-        ​
+          <section class='time_slots'>
+            <section id='add'></section>
+            <button id='add_time'>+ Add More Times</button>
+          </section>
+      </div>
 
-        <button
-          type="submit"
-          class="btn btn-primary"
-          style="margin-top: 2em;
-        margin-bottom: 2em"
-        >
-          Submit
-        </button>
+
+
+      <!-- Calendar Div -->
+      <div class='invites'>
+        <h3> Invite Email </h3>
+
+          <section class='email_slots'>
+            <section id='add_mail'></section>
+            <button id='add_email'>+ Add More Invites</button>
+          </section>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </main>
 
@@ -107,6 +98,7 @@
     <!-- Client side jquery for calendar -->
     <script>
       addTimes();
+      addEmail();
     </script>
   </body>
 </html>
