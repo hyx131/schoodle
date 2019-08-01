@@ -58,19 +58,23 @@
 //   width: 100px;
 // }
 
-.admin-event-information-sec {
+.admin-header-event-information-sec {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 45px;
   font-family: "Open Sans Condensed", sans-serif;
-  padding-top: 250px;
+  padding-top: 200px;
   padding-bottom: 85px;
 }
-.top-event-name {
+.header-event-name {
   font-weight: bold;
 }
 .admin-page-event-img {
   width: 45px;
   height: 45px;
+}
+
+.admin-down-button {
+  margin-top: 50px;
 }

@@ -18,8 +18,8 @@
       <% include partials/_header %>
     </header>
 
-    <div class="admin-event-information-sec">
-      <h1 class="top-event-name"><%= title%></h1>
+    <div class="admin-header-event-information-sec">
+      <h1 class="header-event-name"><%= title%></h1>
       <div>
         <img
           src="/images/friendship.png"
@@ -51,17 +51,27 @@
         <label for="event-description"><b>Description:</b></label>
         <span class="event-description"><%= description %></span>
       </div>
+
+      <div>
+        <img
+          src="/images/down-button.png"
+          alt="down-button"
+          class="admin-down-button"
+        />
+      </div>
     </div>
 
     <!-- Div for the choosing availability table -->
-    <div class="main-summary-container">
-      <div class="main-form-box">
+    <div>
+      <div class="admin-top-form-box">
         <img
           src="/images/step1.png"
           alt="description-img"
-          class="admin-page-event-img"
+          class="admin-form-img"
         />
-        <p><b>Please fill in your information...</b></p>
+        <div class="admin-page-msg">
+          <p><b>Please fill in your information...</b></p>
+        </div>
         <form class="form-box-final">
           <div class="form-row">
             <div class="col">
@@ -79,9 +89,9 @@
             </div>
           </div>
         </form>
-
-        <p><b>Which sunny day would you like to attend...</b></p>
-
+        <div class="admin-page-msg">
+          <p><b>Which sunny day would you like to attend...</b></p>
+        </div>
         <div class="time-slots-check-box">
           <div class="form-check">
             <input
@@ -118,6 +128,13 @@
               2019/06/03 11:44PM
             </label>
           </div>
+        </div>
+        <div>
+          <img
+            src="/images/down-button.png"
+            alt="down-button"
+            class="admin-down-button"
+          />
         </div>
       </div>
 
