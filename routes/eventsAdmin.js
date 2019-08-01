@@ -9,7 +9,7 @@ module.exports = db => {
   router.get("/:admin_token/json", (req, res) => {
     let adminToken = req.params.admin_token;
 
-    pool.query(`SELECT * FROM rsvps JOIN events ON events.id = event_id WHERE admin_token = '${adminToken}'`)
+    pool.query(`SELECT * FROM rsvps JOIN users ON users.id = user_id JOIN events ON events.id = event_id WHERE admin_token = '${adminToken}'`)
     .then(results => {
       console.log("=====AVAILABILITY=====", results);
       let rsvp = results.rows;

@@ -195,34 +195,63 @@ $(document).ready(function() {
 
 
 
-/*********************************** Add time slot table into events_admin.ejs ***********************************/
+/*********************************** Show availability onto table ***********************************/
+
+$(document).ready(function() {
+
+  const urljson = window.location.href.endsWith('/') ? `${window.location.href}json` : `${window.location.href}/json`;
+  const urladmin = window.location.href;
+
+  // $.ajax({
+  //   method: 'POST',
+  //   url: urljson,
+  //   dataType: "json",
+  //   async: true
+  // }).
+
+
+$.ajax({
+  method: 'GET',
+  url: urljson,
+  dataType: 'json',
+  async: true
+}).done((json) => {
+  let rsvps = json.rsvp;
+  // console.log("JSON", rsvps);
+
+  $("#guestInfo").on("click", (e) => {
+    e.preventDefault();
+    let guestEmail = $.trim($("input[type='email']").val());
+
+    for (let i of rsvps) {
+      if (i.email !== guestEmail) {
+        $('.wrong_email_error').slideDown("slow");
+      } else {
+        $("#panel").slideDown("slow");
+        $('.wrong_email_error').hide();
+      }
+    }
+  })
+})
 
 
 
-// $(document).ready(function() {
 
-// const addSlotTable = function (i) {
-//   let checkBoxRow = `
-//   <tr>
-//     <th>${moment(data[i].start_date_time).format("MM/DD/YY")}</th>
-//   </tr>
-//   <tr>
-//     <td><input type='checkbox' name='${data[i].user_id}'></td>
-//   </tr>`;
-
-//   return checkBoxRow;
-// };
+  // $("#guestInfo").on("click", (e) => {
+  //   e.preventDefault();
+  //   alert($.trim($("input[type='text']").val()));
+  //   alert($.trim($("input[type='email']").val()));
+  // })
 
 
-// const addTimeTable = function(data) {
-//   for (let i = 0; i < data.length; i++) {
-//     let $checkBoxRow = $(addSlotTable(i));
-//     $('#add_slot_table').append($checkBoxRow);
-//   }
-// }
+  // $("input[type='checkbox']").click(() => {
+  //   alert($("input[type='checkbox']:checked:last").next().text())
+  // })
 
 
+  // $.each($('input[name = "availability"]:checked)'), () => {
 
+  // });
 
-// });
+});
 
