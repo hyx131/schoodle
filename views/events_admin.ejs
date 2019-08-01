@@ -45,15 +45,6 @@
             <span class="event-location"><%= data[0].address %></span>
           </div>
 
-   <!-- Dive with form to fill in user name and email -->
-   <div class='wrong_email_error'>
-    <p>Wrong Email!</p>
-   </div>
-
-   <div>
-    <form action= <%= `/events/${data[0].admin_token}` %> method='POST'>
-      <label for='name'>Name:</label>
-        <input type='text' name='name' placeholder="Name">
 
           <div>
               <img
@@ -89,7 +80,6 @@
       <p><b>Please fill in your information...</b></p>
     </div>
 
-      <button id='guestInfo' type="submit" class='admin-down-button'></button>
     <form class="form-box-final" method='POST' action= <%= `/events/${data[0].admin_token}` %> >
 <div >
       <label for='name'></label>
@@ -122,7 +112,6 @@
         <div class="admin-page-msg">
           <div class="form-check">
             <input
-              name='availability'
               id="checkbox[]"
               type="checkbox"
               value="T/F"
