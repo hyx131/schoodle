@@ -1,8 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../db/dbPool");
+const {  generateRandomString, toggleButton } = require("./helpers.js");
+
 
 module.exports = db => {
+
   router.get("/:admin_token", (req, res) => {
     let adminToken = req.params.admin_token;
     console.log(adminToken);

@@ -1,10 +1,15 @@
+html {
+  scroll-behavior: smooth;
+ }
+
 .admin-top-form-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding: 10em;
+  padding: 10em 10em 0em 10em;
   font-size: 22px;
+  scroll-behavior: smooth;
 }
 
 .admin-form-img {
@@ -35,8 +40,19 @@
 }
 
 .attendee-box {
-  padding-bottom: 15em;
+  padding-bottom: 5em;
   padding-left: 15em;
   padding-right: 15em;
   font-size: 20px;
+}
+
+#panel, #flip {
+  padding: 5px;
+  text-align: center;
+
+}
+
+#panel {
+  padding: 50px;
+  display: none;
 }

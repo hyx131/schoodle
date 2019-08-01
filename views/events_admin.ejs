@@ -1,183 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Admin</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-    />
 
-    <!-- External Links -->
-    <% include ./partials/_indexLinks %>
-  </head>
+<head>
+  <title>Admin</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-  <body>
-    <header>
-      <% include partials/_header %>
-    </header>
 
-    <div class="admin-header-event-information-sec">
-      <h1 class="header-event-name"><%= title%></h1>
-      <div>
-        <img
-          src="/images/friendship.png"
-          alt="host-name-img"
-          class="admin-page-event-img"
-        />
+  <!-- External Links -->
+  <% include ./partials/_indexLinks %>
+</head>
 
-        <label for="host-name"> <b>Host:</b></label>
-        <span class="host-name"><%= name %></span>
-      </div>
+<body>
+  <header>
+    <% include partials/_header %>
+  </header>
 
-      <div>
-        <img
-          src="/images/pin.png"
-          alt="location-img"
-          class="admin-page-event-img"
-        />
-        <label for="event-location"><b>Location:</b></label>
-        <span class="event-location"><%= address %></span>
-      </div>
+  <div class="admin-header-event-information-sec">
+    <h1 class="header-event-name"><%= title%></h1>
+    <div>
+      <img src="/images/friendship.png" alt="host-name-img" class="admin-page-event-img" />
 
-      <div>
-        <img
-          src="/images/pencils.png"
-          alt="description-img"
-          class="admin-page-event-img"
-        />
-
-        <label for="event-description"><b>Description:</b></label>
-        <span class="event-description"><%= description %></span>
-      </div>
-
-      <div>
-        <a href="#anchor-one" class="toggle-one-slide">
-          <img
-            src="/images/down-button.png"
-            alt="down-button"
-            class="admin-down-button-one"
-          />
-        </a>
-      </div>
+      <label for="host-name"> <b>Host:</b></label>
+      <span class="host-name"><%= name %></span>
     </div>
 
-    <!-- Div for the choosing availability table -->
-    <div id="anchor-one">
-      <div class="admin-top-form-box">
-        <img
-          src="/images/step1.png"
-          alt="description-img"
-          class="admin-form-img"
-        />
-        <div class="admin-page-msg">
-          <p><b>Please fill in your information...</b></p>
-        </div>
-        <form class="form-box-final">
-          <div class="form-row">
-            <div class="col">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="First name"
-              />
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Last name" />
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Email" />
-            </div>
-          </div>
-        </form>
-        <div class="admin-page-msg">
-          <p><b>Which sunny day would you like to attend...</b></p>
-        </div>
-        <div class="time-slots-check-box">
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              name="id 1"
-              type="checkbox"
-              value="T/F"
-            />
-            <label class="form-check-label" for="defaultCheck1">
-              2019/06/03 11:44PM
-            </label>
-          </div>
+    <div>
+      <img src="/images/pin.png" alt="location-img" class="admin-page-event-img" />
+      <label for="event-location"><b>Location:</b></label>
+      <span class="event-location"><%= address %></span>
+    </div>
 
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              name="id 2"
-              type="checkbox"
-              value="T/F"
-            />
-            <label class="form-check-label" for="defaultCheck1">
-              2019/06/03 11:44PM
-            </label>
-          </div>
+    <div>
+      <img src="/images/pencils.png" alt="description-img" class="admin-page-event-img" />
 
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              name="id 3"
-              type="checkbox"
-              value="T/F"
-            />
-            <label class="form-check-label" for="defaultCheck1">
-              2019/06/03 11:44PM
-            </label>
+      <label for="event-description"><b>Description:</b></label>
+      <span class="event-description"><%= description %></span>
+    </div>
+
+    <div>
+      <a href="#anchor-one" class="toggle-one-slide">
+        <img src="/images/down-button.png" alt="down-button" class="admin-down-button-one" />
+      </a>
+    </div>
+  </div>
+
+  <!-- Div for the choosing availability table -->
+  <div id="anchor-one">
+    <div class="admin-top-form-box">
+      <img src="/images/step1.png" alt="description-img" class="admin-form-img" />
+      <div class="admin-page-msg">
+        <p><b>Please fill in your information...</b></p>
+      </div>
+      <form class="form-box-final">
+        <div class="form-row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="First name" />
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Last name" />
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Email" />
           </div>
         </div>
-        <div>
-          <a href="#anchor-two">
-            <img
-              src="/images/down-button.png"
-              alt="down-button"
-              class="admin-down-button"
-            />
+      </form>
+      <div class="admin-page-msg">
+        <p><b>Which sunny day would you like to attend...</b></p>
+      </div>
+      <div class="time-slots-check-box">
+        <div class="form-check">
+          <input class="form-check-input" name="id 1" type="checkbox" value="T/F" />
+          <label class="form-check-label" for="defaultCheck1">
+            2019/06/03 11:44PM
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" name="id 2" type="checkbox" value="T/F" />
+          <label class="form-check-label" for="defaultCheck1">
+            2019/06/03 11:44PM
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" name="id 3" type="checkbox" value="T/F" />
+          <label class="form-check-label" for="defaultCheck1">
+            2019/06/03 11:44PM
+          </label>
+        </div>
+      </div>
+      <div>
+          <a href="#anchor-two" class="toggle-one-slide">
+          <div id="flip">
+          <img src="/images/down-button.png" alt="down-button" class="admin-down-button" />
           </a>
         </div>
       </div>
-
-      <div class="attendee-box" id="anchor-two">
-        <img src="/images/step2.png" alt="number-two-img" class="number-two" />
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Attendee</th>
-              <th scope="col">2019/06/03 11:44PM</th>
-              <th scope="col">2019/06/03 11:44PM</th>
-              <th scope="col">2019/06/03 11:44PM</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Selin huangnngngng</th>
-              <td>True/False</td>
-              <td>True/False</td>
-              <td>True/False</td>
-            </tr>
-            <tr>
-              <th scope="row">Vasiliy dsdasdasdsadsad</th>
-              <td>True/False</td>
-              <td>True/False</td>
-              <td>True/False</td>
-            </tr>
-            <tr>
-              <th scope="row">Victoria dsadasd</th>
-              <td>True/False</td>
-              <td>True/False</td>
-              <td>True/False</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
 
-    <!-- includes Bootstrap/JQuery JS -->
-    <% include ./partials/_indexScripts %>
-  </body>
+    <div id="panel">
+    <div class="attendee-box" id="anchor-two">
+      <img src="/images/step2.png" alt="number-two-img" class="number-two" />
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Attendee</th>
+            <th scope="col">2019/06/03 11:44PM</th>
+            <th scope="col">2019/06/03 11:44PM</th>
+            <th scope="col">2019/06/03 11:44PM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Selin huangnngngng</th>
+            <td>True/False</td>
+            <td>True/False</td>
+            <td>True/False</td>
+          </tr>
+          <tr>
+            <th scope="row">Vasiliy dsdasdasdsadsad</th>
+            <td>True/False</td>
+            <td>True/False</td>
+            <td>True/False</td>
+          </tr>
+          <tr>
+            <th scope="row">Victoria dsadasd</th>
+            <td>True/False</td>
+            <td>True/False</td>
+            <td>True/False</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+
+  <!-- includes Bootstrap/JQuery JS -->
+  <% include ./partials/_indexScripts %>
+</body>
+
 </html>
