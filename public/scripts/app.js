@@ -198,6 +198,7 @@ $(document).ready(function() {
 /*********************************** Show availability onto table ***********************************/
 
 $(document).ready(function() {
+  $('.wrong_email_error').hide();
 
   const urljson = window.location.href.endsWith('/') ? `${window.location.href}json` : `${window.location.href}/json`;
   const urladmin = window.location.href;
@@ -224,11 +225,10 @@ $.ajax({
     let guestEmail = $.trim($("input[type='email']").val());
 
     for (let i of rsvps) {
-      if (i.email !== guestEmail) {
-        $('.wrong_email_error').slideDown("slow");
-      } else {
+      if (i.email === guestEmail) {
         $("#panel").slideDown("slow");
-        $('.wrong_email_error').hide();
+      } else {
+        $('.wrong_email_error').slideDown("slow");
       }
     }
   })
