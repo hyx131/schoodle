@@ -7,36 +7,60 @@
   font-size: 22px;
 }
 
-.admin-form-img {
+.step-buttons {
   width: 150px;
   height: 150px;
 }
+// .number-two {
+//   padding-left: 560px;
+// }
 
 .admin-page-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 25px;
   margin-bottom: 25px;
-  font-size: 35px;
+  p {
+    font-size: 35px;
+  }
+}
+.form-check-label {
+  font-size: 20px;
 }
 
 .form-box-final {
-  padding: 0.5em;
-  padding-bottom: 1.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 1em;
+}
+
+.admin-down-button {
+  margin-top: 0px;
+  width: 100px;
+  height: 100px;
+}
+
+.check-button {
+  width: 20px;
+  height: 20px;
 }
 
 .time-slots-check-box {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 200px;
   justify-content: space-between;
-}
-.form-check {
-  padding-left: 2em;
-  padding-right: 2em;
-  padding-bottom: 1em;
-  padding-top: 1em;
+  p {
+    font-size: 35px;
+  }
 }
 
-.attendee-box {
-  padding-bottom: 15em;
-  padding-left: 15em;
-  padding-right: 15em;
-  font-size: 20px;
+.admin-rsvp-table {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 300px;
 }
