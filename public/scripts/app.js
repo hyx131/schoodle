@@ -157,7 +157,7 @@ const flatpickrStyle = function ($el) {
   });
 
 }
-/********************************** Add Guest Email ***********************************/
+/********************************** Add Guest Email Div ***********************************/
 
 const addEmailSlot = function(i) {
   let mail = `
