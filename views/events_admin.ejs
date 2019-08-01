@@ -1,145 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Meta Information -->
+    <title>Events</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <!-- External Links -->
+    <% include ./partials/_indexLinks %>
+    <% include ./partials/_indexScripts %>
 
-<head>
-  <title>Admin</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
 
 
-  <!-- External Links -->
-  <% include ./partials/_indexLinks %>
-</head>
 
-<body>
-  <header>
-    <% include partials/_header %>
-  </header>
+  <body>
 
-  <div class="admin-header-event-information-sec">
-    <h1 class="header-event-name"><%= title%></h1>
+    <button class="btn btn-primary">something</button>
+    <header>
+      <% include partials/_header %>
+    </header>
+
+
     <div>
-      <img src="/images/friendship.png" alt="host-name-img" class="admin-page-event-img" />
-
-      <label for="host-name"> <b>Host:</b></label>
-      <span class="host-name"><%= name %></span>
+      <h1><%=data[0].title%></h1>
     </div>
 
     <div>
-      <img src="/images/pin.png" alt="location-img" class="admin-page-event-img" />
-      <label for="event-location"><b>Location:</b></label>
-      <span class="event-location"><%= address %></span>
+      <h5>About this event...</h5>
+      <p class='event_description'><%=data[0].description%></p>
+
+      <h5>Location:</h5>
+      <p class="location"><%= data[0].address %></p>
     </div>
 
-    <div>
-      <img src="/images/pencils.png" alt="description-img" class="admin-page-event-img" />
 
-      <label for="event-description"><b>Description:</b></label>
-      <span class="event-description"><%= description %></span>
-    </div>
 
-    <div>
-      <a href="#anchor-one" class="toggle-one-slide">
-        <img src="/images/down-button.png" alt="down-button" class="admin-down-button-one" />
-      </a>
-    </div>
-  </div>
+   <!-- Dive with form to fill in user name and email -->
+   <div>
+    <form action= <%= `/events/${data[0].admin_token}` %> method='POST'>
+      <label for='name'>Name:</label>
+        <input type='text' name='name' placeholder="Name">
 
-  <!-- Div for the choosing availability table -->
-  <div id="anchor-one">
-    <div class="admin-top-form-box">
-      <img src="/images/step1.png" alt="description-img" class="admin-form-img" />
-      <div class="admin-page-msg">
-        <p><b>Please fill in your information...</b></p>
-      </div>
-      <form class="form-box-final">
-        <div class="form-row">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="First name" />
+      <label for='email'>Email Adress:</label>
+        <input type='email' name='email' placeholder="Email">
+
+      <button type="submit" class='admin-down-button'></button>
+    </form>
+   </div>
+
+
+
+
+    <!-- Div for the choosing availability table -->
+      <% for (let i = 0; i < data.length; i++) { %>
+        <div class="time-slots-check-box">
+          <div class="form-check">
+            <input
+              id="checkbox[]"
+              type="checkbox"
+              value="T/F"
+            />
+            <% if (moment(data[i].start_date_time).format("MM/DD/YY") === moment(data[i].start_end_time).format("MM/DD/YY")) { %>
+            <label class="form-check-label" for="defaultCheck1">
+              <%= moment(data[i].start_date_time).format("MM/DD/YY")%>
+            </label>
+            <p><%= `${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].start_end_time).format("hh:mm A")}` %> </p>
+            <% } else { %>
+              <label class="form-check-label" for="defaultCheck1">
+                  <%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].start_end_time).format("MM/DD/YY")} ${moment(data[i].start_end_time).format("hh:mm A")}` %>
+              </label>
+            <% } %>
           </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Last name" />
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Email" />
-          </div>
-        </div>
-      </form>
-      <div class="admin-page-msg">
-        <p><b>Which sunny day would you like to attend...</b></p>
       </div>
-      <div class="time-slots-check-box">
-        <div class="form-check">
-          <input class="form-check-input" name="id 1" type="checkbox" value="T/F" />
-          <label class="form-check-label" for="defaultCheck1">
-            2019/06/03 11:44PM
-          </label>
-        </div>
+    <% } %>
 
-        <div class="form-check">
-          <input class="form-check-input" name="id 2" type="checkbox" value="T/F" />
-          <label class="form-check-label" for="defaultCheck1">
-            2019/06/03 11:44PM
-          </label>
-        </div>
 
-        <div class="form-check">
-          <input class="form-check-input" name="id 3" type="checkbox" value="T/F" />
-          <label class="form-check-label" for="defaultCheck1">
-            2019/06/03 11:44PM
-          </label>
-        </div>
-      </div>
-      <div>
-          <a href="#anchor-two" class="toggle-one-slide">
-          <div id="flip">
-          <img src="/images/down-button.png" alt="down-button" class="admin-down-button" />
+
+    <!-- Div for the showing availability table with users -->
+    <div>
+
+      <table border="1" style="width:100%">
+        <tr>
+          <th>Name:</th>
+          <% for (let i = 0; i < data.length; i++) { %>
+            <% if (moment(data[i].start_date_time).format("MM/DD/YY") === moment(data[i].start_end_time).format("MM/DD/YY")) { %>
+          <th><%= `${moment(data[i].start_date_time).format("MM/DD/YY")}
+            ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].start_end_time).format("hh:mm A")}` %></th>
+            <%} else {%>
+          <th><%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].start_end_time).format("MM/DD/YY")} ${moment(data[i].start_end_time).format("hh:mm A")}` %></th>
+            <% } %>
+          <% } %>
+        </tr>
+        <tr>
+          <td><%= data[0].name %></td>
+          <td>T</td>
+          <td>T</td>
+          <td>F</td>
+        </tr>
+        <tr>
+          <td>Guest 2 Name</td>
+          <td>T</td>
+          <td>F</td>
+          <td>F</td>
+        </tr>
+          <tr>
+            <td>Guest 3 Name</td>
+            <td>F</td>
+            <td>T</td>
+            <td>T</td>
+          </tr>
+      </table>
+
+    </div>
+
+
+
+    <div>
+      <h1>Comments Area</h1>
+      <form action="/events" method="POST">
+        <div>
+          <a href="#anchor-two">
+            <img
+              src="/images/down-button.png"
+              alt="down-button"
+              class="admin-down-button"
+            />
           </a>
         </div>
       </div>
       </div>
     </div>
 
-    <div id="panel">
-    <div class="attendee-box" id="anchor-two">
-      <img src="/images/step2.png" alt="number-two-img" class="number-two" />
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Attendee</th>
-            <th scope="col">2019/06/03 11:44PM</th>
-            <th scope="col">2019/06/03 11:44PM</th>
-            <th scope="col">2019/06/03 11:44PM</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Selin huangnngngng</th>
-            <td>True/False</td>
-            <td>True/False</td>
-            <td>True/False</td>
-          </tr>
-          <tr>
-            <th scope="row">Vasiliy dsdasdasdsadsad</th>
-            <td>True/False</td>
-            <td>True/False</td>
-            <td>True/False</td>
-          </tr>
-          <tr>
-            <th scope="row">Victoria dsadasd</th>
-            <td>True/False</td>
-            <td>True/False</td>
-            <td>True/False</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    </div>
-  </div>
 
-  <!-- includes Bootstrap/JQuery JS -->
-  <% include ./partials/_indexScripts %>
-</body>
+    <!-- includes Bootstrap/JQuery JS -->
+    <!-- <% include ./partials/_indexScripts %> -->
 
+  </body>
 </html>

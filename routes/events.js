@@ -12,19 +12,6 @@ module.exports = db => {
       apiKey: process.env.MAIL_GUN_PRIVATE_KEY,
       domain: process.env.MAIL_GUN_DOMAIN
     });
-    /***************************************************************************** */
-
-    // const dataOne = {
-    //   to: req.body.invitesEmail,
-    //   from: req.body.userEmail,
-    //   subject: "Pineapple Event",
-    //   text: "Hello!"
-    // };
-    // mg.messages().send(dataOne, function(error, body) {
-    //   console.log("completed invite emails sent!");
-    // });
-    /***************************************************************************** */
-
     const allData = { users: {}, events: {}, time_slots: {} };
 
     // users:
@@ -49,6 +36,18 @@ module.exports = db => {
       allData.time_slots.endTime.push(i.endTime ? i.endTime : null);
     }
 
+
+    // insert guest email into database;
+    for (let i of req.body.guestMail) {
+      const TEXT = "INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *"
+
+      pool.query(TEXT, [null, i]).then((guestMailResults) => {
+        console.log("----MAIL----", guestMailResults);
+      }).catch((e) => console.log('add guest email err',e))
+
+      console.log("--------------", i);
+    }
+
     addUser(allData)
       .then(userData => {
         let userId = userData.rows[0].id;
@@ -61,7 +60,7 @@ module.exports = db => {
             /*********************************************************************************************** */
 
             const dataOne = {
-              to: req.body.invitesEmail,
+              to: req.body.guestMail["${i}"],
               from: req.body.userEmail,
               subject: "Pineapple Event",
               text: `Hello! You have been invited too http://localhost:8080/events/${
@@ -69,7 +68,7 @@ module.exports = db => {
               }`
             };
             mg.messages().send(dataOne, function(error, body) {
-              console.log("completed invite emails sent!");
+              console.log("completed invite emails sent!", req.body.guestMail);
             });
 
             /*********************************************************************************************** */

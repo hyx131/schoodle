@@ -4,22 +4,68 @@ const pool = require("../db/dbPool");
 const {  generateRandomString, toggleButton } = require("./helpers.js");
 
 
+
+
+
 module.exports = db => {
+  // router.get("/:admin_token/json", (req, res) => {
+  //   let adminToken = req.params.admin_token;
+
+  //   pool.query(`SELECT availability FROM rsvps JOIN events ON events.id = event_id WHERE admin_token = '${adminToken}'`)
+  //   .then(results => {
+  //     let info = results.rows;
+
+  //     res.json({ info });
+  //   })
+  //   .catch((e) => console.log('error in events/:admin_token', e))
+  // });
 
   router.get("/:admin_token", (req, res) => {
     let adminToken = req.params.admin_token;
     console.log(adminToken);
 
-    pool
-      .query(
-        `SELECT users.*, events.*, time_slots.* FROM users JOIN events ON users.id = user_id JOIN time_slots ON event_id = events.id WHERE admin_token = '${adminToken}'`
-      )
-      .then(results => {
-        console.log("RESULTS: ", results.rows[0]);
-        res.render("../views/events_admin", results.rows[0]);
-      })
-      .catch(e => console.log("error in events/:admin_token", e));
+  pool.query(`SELECT users.*, events.*, time_slots.* FROM users JOIN events ON users.id = user_id JOIN time_slots ON event_id = events.id WHERE admin_token = '${adminToken}'`)
+    .then(results => {
+      console.log('RESULTS: ', results.rows)
+      let data = results.rows;
+      res.render("../views/events_admin", { data: data });
+    })
+    .catch((e) => console.log('error in events/:admin_token', e))
   });
 
+
+
+  router.post('/:admin_token', (req, res) => {
+    let aToken = req.params.admin_token;
+    let gEmail = req.body.email;
+
+    pool.query(`
+    (SELECT id FROM events WHERE admin_token = '${aToken}') UNION ALL
+    (SELECT id FROM users WHERE email = '${gEmail}');
+    `).then((res) => {
+      let eventId = res.rows[0].id;
+      let guestId = res.rows[1].id;
+      console.log('===eventId====', res.rows)
+      console.log('====eventID====', eventId)
+      console.log('====guestID====', guestId)
+
+
+      // const TEXT = "INSERT INTO rsvps (availability, user_id, event_id) VALUES ($1, $2, $3) RETURNING *";
+      // pool.query(TEXT, [])
+
+
+    })
+
+    res.status(204).send();
+  })
+
+
+
+
   return router;
+
 };
+
+
+
+

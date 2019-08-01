@@ -23,7 +23,9 @@
       <form class="form-button" action="/events" method="POST">
         <div class="eventInfo">
           <h2>Event Information</h2>
-          <label for="name">First Name Last Name</label>
+          <img src ="/images/neonpencil.png" class="pencil-img">
+        </br>
+          <label for="name" class="pencil-img">First Name Last Name</label>
           <input
             class="form-control"
             type="userName"
@@ -64,43 +66,42 @@
             style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
           />
         </div>
+      </div>
 
-
-
+      <!-- Calendar Div -->
+      <div class='calendar'>
         <section
-          class="time_slots"
-          style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
+        class="time_slots"
+        style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
         >
-          <section
-            id="add"
-            style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
-          ></section>
-          <button
-            id="add_time"
-            style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
-          >
-            + TIMES
-          </button>
-        </section>
-
-        <label for="invites"><h2>Invite Attendees</h2></label>
-        <input
-          class="form-control"
-          type="invitesEmail"
-          name="invitesEmail"
-          placeholder="Enter email here"
+        <img src="/images/clock.png" class = "clock-img">
+        <section
+          id="add"
           style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
-        />
-
-        ​
+        ></section>
         <button
-          type="submit"
-          class="invite-button"
-          style="margin-top: 2em;
-        margin-bottom: 2em"
+          id="add_time"
+          style="width: 300px; margin: 0em; margin-top: 0em; margin-bottom: 1em"
         >
-          Submit
+          + TIMES
         </button>
+      </section>
+      </div>
+
+
+
+      <!-- Calendar Div -->
+      <div class='invites'>
+        <h2> Invite Attendees </h2>
+        <img src="/images/mailbox.png" class="mailbox-img">
+          <section class='email_slots'>
+            <section id='add_mail'></section>
+            <button id='add_email' class = "button-style">+ Add More Invites</button>
+          </section>
+      </div>
+
+
+      <button type="submit" class="invite-button">Submit</button>
       </form>
     </main>
 
@@ -109,6 +110,7 @@
     <!-- Client side jquery for calendar -->
     <script>
       addTimes();
+      addEmail();
     </script>
   </body>
 </html>
