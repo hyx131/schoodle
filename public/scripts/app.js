@@ -282,70 +282,74 @@ $.ajax({
 
 
 
-  $( "form" ).submit(function( event ) {
-    console.log( "zzzzzzzzzzzzzzz", $( this ).serializeArray() );
-    event.preventDefault();
-  });
+  // $( "form" ).submit(function( event ) {
+  //   console.log( "zzzzzzzzzzzzzzz", $( this ).serializeArray() );
+  //   event.preventDefault();
+  // });
 
   $("#after_true_false").click(function(e) {
     e.preventDefault();
 
 
-    // var someObj={};
-    // someObj.Checked=[];
-    // someObj.NotChecked=[];
-    // let guestName = $.trim($("input[type='text']").val());
-    // let arrDiv = [`<p>${guestName}</p>`];
+    var someObj={};
+    someObj.Checked=[];
+    someObj.NotChecked=[];
+    let guestName = $.trim($("input[type='text']").val());
+    let arrDiv = [`<p>${guestName}</p>`];
 
 
-    // $("input:checkbox").each(function(){
-    //   var $this = $(this);
+    $("input:checkbox").each(function(){
+      var $this = $(this);
 
-    //   if($this.is(":checked")){
-    //     someObj.Checked.push($this.attr("id"));
-    //   }else{
-    //     someObj.Checked.push(0);
-    //   }
-    // })
-    // console.log("OOOOOOOOOOO", someObj);
-    // console.log(data)
+      if($this.is(":checked")){
+        someObj.Checked.push($this.attr("id"));
+      }else{
+        someObj.Checked.push(0);
+      }
+    })
+    console.log("OOOOOOOOOOO", someObj);
+    console.log(data)
 
 
-    // // for (let i = 0; i < someObj.Checked.length; i++) {
-    // //   if (Number(data[i].id) === Number(someObj.Checked[i])) {
-    // //     $('#true_false').append(`<p>T</p>`);
-    // //   } else {
-    // //     $('#true_false').append(`<p>F</p>`);
-    // //   }
-    // // }
-    // $('#true_false').prepend(`<p>${guestName}</p>`);
-
-    // // add to url database:
     // for (let i = 0; i < someObj.Checked.length; i++) {
     //   if (Number(data[i].id) === Number(someObj.Checked[i])) {
-    //     arrDiv.push(`<p>T</p>`);
     //     $('#true_false').append(`<p>T</p>`);
     //   } else {
-    //     arrDiv.push(`<p>F</p>`);
     //     $('#true_false').append(`<p>F</p>`);
     //   }
     // }
+    // $('#true_false').prepend(`<p>${guestName}</p>`);
 
-    // console.log("aaarrrrrraayyyy", arrDiv);
+    // add to url database:
+    for (let i = 0; i < someObj.Checked.length; i++) {
+      if (Number(data[i].id) === Number(someObj.Checked[i])) {
+        arrDiv.push(`<p>T</p>`);
+        // $('#true_false').append(`<p>T</p>`);
+      } else {
+        arrDiv.push(`<p>F</p>`);
+        // $('#true_false').append(`<p>F</p>`);
+      }
+    }
 
-    // $.ajax({
-    //   type: "POST",
-    //   url: urltable,
-    //   data: $(arrDiv),
-    //   dataType: 'json',
-    //   success: function(data) {
-    //     console.log(data);
-    //   },
-    //   error: function(xhr, status, err) {
-    //     console.log(err);
-    //   }
+    for (let i = 0; i < arrDiv.length; i++) {
+      $('#true_false').append(arrDiv[i]);
+    }
 
-    // });
+    console.log("aaarrrrrraayyyy", arrDiv);
+
+    $.ajax({
+      type: "POST",
+      url: urltable,
+      data: { arrDiv: arrDiv },
+      dataType: 'json',
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(xhr, status, err) {
+        console.log(err);
+      }
+
+    });
 
 
   });
@@ -370,6 +374,6 @@ $.ajax({
 
   // $.each($('input[name = "availability"]:checked)'), () => {
 
-  });
+});
 
 
