@@ -38,7 +38,7 @@ body {
 /* Mobile Styles */
 @media only screen and (max-width: 410px) {
   body {
-    border: 3px red dotted;
+    // border: 3px red dotted;
     background-color: #f09a9d; /* Red */
   }
   nav#navbar-nav {
@@ -46,7 +46,7 @@ body {
     height: 100px;
     align-items: center;
     justify-content: space-between;
-    border: 5px red dotted;
+    // border: 5px red dotted;
     padding: 0.5;
     margin: 0px;
 

@@ -218,7 +218,7 @@ $.ajax({
   async: true
 }).done((json) => {
   let rsvps = json.rsvp;
-  // console.log("JSON", rsvps);
+  console.log("J********SON********", rsvps);
 
   $("#guestInfo").on("click", (e) => {
     e.preventDefault();
@@ -237,21 +237,21 @@ $.ajax({
 
 
 
-  // $("#guestInfo").on("click", (e) => {
-  //   e.preventDefault();
-  //   alert($.trim($("input[type='text']").val()));
-  //   alert($.trim($("input[type='email']").val()));
-  // })
+  $("#guestInfo").on("click", (e) => {
+    e.preventDefault();
+    alert($.trim($("input[type='text']").val()));
+    alert($.trim($("input[type='email']").val()));
+  })
 
 
-  // $("input[type='checkbox']").click(() => {
-  //   alert($("input[type='checkbox']:checked:last").next().text())
-  // })
+  $("input[type='checkbox']").click(() => {
+    alert($("input[type='checkbox']:checked:last").next().text())
+  })
 
 
-  // $.each($('input[name = "availability"]:checked)'), () => {
+  $.each($('input[name = "availability"]:checked)'), () => {
 
-  // });
+  });
 
 });
 
