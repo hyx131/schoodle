@@ -295,7 +295,7 @@ $.ajax({
     someObj.Checked=[];
     someObj.NotChecked=[];
     let guestName = $.trim($("input[type='text']").val());
-    let arrDiv = [];
+    let arrDiv = [`<p>${guestName}</p>`];
 
 
     $("input:checkbox").each(function(){
@@ -322,18 +322,14 @@ $.ajax({
 
     // add to url database:
     for (let i = 0; i < someObj.Checked.length; i++) {
-      arrDiv = [`<div id=${i} class='ava_table'> <p>${guestName}</p>`];
 
       if (data[i].id === Number(someObj.Checked[i])) {
-        // console.log("dddddddd", data[i].id);
-        // console.log("ooooooooo", someObj.Checked[i]);
-        // console.log(someObj.Checked.length - 1);
-        // console.log(i);
-        (i === (someObj.Checked.length - 1)) ? arrDiv.push(`<p>T</p> </div>`) : arrDiv.push(`<p>T</p>`);
+
+        arrDiv.push(`<p>T</p>`);
 
         // $('#true_false').append(`<p>T</p>`);
       } else {
-        (i === (someObj.Checked.length - 1)) ? arrDiv.push(`<p>F</p> </div>`) : arrDiv.push(`<p>F</p>`);
+        arrDiv.push(`<p>F</p>`);
 
         // $('#true_false').append(`<p>F</p>`);
       }
