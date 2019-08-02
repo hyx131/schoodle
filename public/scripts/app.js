@@ -295,7 +295,7 @@ $.ajax({
     someObj.Checked=[];
     someObj.NotChecked=[];
     let guestName = $.trim($("input[type='text']").val());
-    let arrDiv = [`<p>${guestName}</p>`];
+    let arrDiv = [];
 
 
     $("input:checkbox").each(function(){
@@ -312,24 +312,34 @@ $.ajax({
 
 
     // for (let i = 0; i < someObj.Checked.length; i++) {
-    //   if (Number(data[i].id) === Number(someObj.Checked[i])) {
-    //     $('#true_false').append(`<p>T</p>`);
-    //   } else {
-    //     $('#true_false').append(`<p>F</p>`);
-    //   }
-    // }
-    // $('#true_false').prepend(`<p>${guestName}</p>`);
+      //   if (Number(data[i].id) === Number(someObj.Checked[i])) {
+        //     $('#true_false').append(`<p>T</p>`);
+        //   } else {
+          //     $('#true_false').append(`<p>F</p>`);
+          //   }
+          // }
+          // $('#true_false').prepend(`<p>${guestName}</p>`);
 
     // add to url database:
     for (let i = 0; i < someObj.Checked.length; i++) {
-      if (Number(data[i].id) === Number(someObj.Checked[i])) {
-        arrDiv.push(`<p>T</p>`);
+      arrDiv = [`<div id=${i} class='ava_table'> <p>${guestName}</p>`];
+
+      if (data[i].id === Number(someObj.Checked[i])) {
+        // console.log("dddddddd", data[i].id);
+        // console.log("ooooooooo", someObj.Checked[i]);
+        // console.log(someObj.Checked.length - 1);
+        // console.log(i);
+        (i === (someObj.Checked.length - 1)) ? arrDiv.push(`<p>T</p> </div>`) : arrDiv.push(`<p>T</p>`);
+
         // $('#true_false').append(`<p>T</p>`);
       } else {
-        arrDiv.push(`<p>F</p>`);
+        (i === (someObj.Checked.length - 1)) ? arrDiv.push(`<p>F</p> </div>`) : arrDiv.push(`<p>F</p>`);
+
         // $('#true_false').append(`<p>F</p>`);
       }
     }
+
+
 
     for (let i = 0; i < arrDiv.length; i++) {
       $('#true_false').append(arrDiv[i]);
