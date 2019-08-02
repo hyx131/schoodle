@@ -34,6 +34,11 @@ module.exports = db => {
     .catch((e) => console.log('error in events/:admin_token/time', e))
   });
 
+  router.get("/:admin_token/table", (req, res) => {
+    let data = req.body;
+
+    res.json({ data })
+  });
 
 
   router.get("/:admin_token", (req, res) => {

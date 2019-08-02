@@ -80,7 +80,7 @@
       <p><b>Please fill in your information...</b></p>
     </div>
 
-    <form class="form-box-final" method='POST' action= <%= `/events/${data[0].admin_token}` %> >
+  <form class="form-box-final" method='POST' action= <%= `/events/${data[0].admin_token}` %> >
       <div >
         <label for='name'></label>
         <input type='text' name='name' placeholder="Enter name here">
@@ -89,56 +89,52 @@
         <label for='email'></label>
         <input type='email' name='email' placeholder="Enter email here">
       </div>
-      <div>
-        <button type="submit" id='guestInfo'></button>
-      </div>
-    </form>
 
-    <div>
+      <div>
         <a href="#anchor-two">
           <img
-            src="/images/down-button.png"
-            alt="down-button"
-            class="admin-down-button"
+          src="/images/down-button.png"
+          alt="down-button"
+          class="admin-down-button"
           />
         </a>
       </div>
-</div>
+    </div>
 
 
-<div class="time-slots-check-box">
-<img src="/images/step2.png" alt="number-two-img" class="step-buttons" />
-<p><b>Which sunny day would you like to attend...</b></p>
-<% for (let i = 0; i < data.length; i++) { %>
+    <div class="time-slots-check-box">
+      <img src="/images/step2.png" alt="number-two-img" class="step-buttons" />
+      <p><b>Which sunny day would you like to attend...</b></p>
+      <% for (let i = 0; i < data.length; i++) { %>
         <div class="admin-page-msg">
           <div class="form-check">
             <input
-              name='availability'
-              id="<%= data[i].id %>"
-              type="checkbox"
-              value="T/F"
+            name='availability'
+            id="<%= data[i].id %>"
+            type="checkbox"
+            value="T/F"
             />
             <% if (moment(data[i].start_date_time).format("MM/DD/YY") === moment(data[i].end_date_time).format("MM/DD/YY")) { %>
-            <label class="form-check-label" for="defaultCheck1">
-              <%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}`%>
-            </label>
-            <%= `${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}`%>
-            <%= console.log("*************************************", `${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}`) %>
-            <% } else { %>
               <label class="form-check-label" for="defaultCheck1">
-                  <%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("MM/DD/YY")} ${moment(data[i].end_date_time).format("hh:mm A")}` %>
+                <%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}`%>
               </label>
+              <%= `${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}`%>
+              <% } else { %>
+                <label class="form-check-label" for="defaultCheck1">
+                  <%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("MM/DD/YY")} ${moment(data[i].end_date_time).format("hh:mm A")}` %>
+                </label>
+                <% } %>
+              </div>
+            </div>
             <% } %>
-          </div>
-        </div>
-        <% } %>
-        <button id='after_true_false'>Go</button>
+            <button type='submit' id='after_true_false'>Go</button>
 
- <!-- Dive with form to fill in user name and email -->
+  </form>
+            <!-- Dive with form to fill in user name and email -->
 
 
-<!-- Div for the choosing availability table -->
-<div class="admin-rsvp-table">
+            <!-- Div for the choosing availability table -->
+            <div class="admin-rsvp-table">
     <img src="/images/step3.png" alt="number-two-img" class="step-buttons" />
 
       <table border="1" style="width:100%">
@@ -154,24 +150,6 @@
           <% } %>
 
       </tr>
-      <tr>
-        <td><%= data[0].name %></td>
-        <td>T</td>
-        <td>T</td>
-        <td>F</td>
-      </tr>
-      <tr>
-        <td>Guest 2 Name</td>
-        <td>T</td>
-        <td>F</td>
-        <td>F</td>
-      </tr>
-        <tr>
-          <td>Guest 3 Name</td>
-          <td>F</td>
-          <td>T</td>
-          <td>T</td>
-        </tr>
     </table>
 
     <div id="true_false">

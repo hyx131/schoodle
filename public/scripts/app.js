@@ -202,6 +202,7 @@ $(document).ready(function() {
 
   const urljson = window.location.href.endsWith('/') ? `${window.location.href}json` : `${window.location.href}/json`;
   const urltime = window.location.href.endsWith('/') ? `${window.location.href}time` : `${window.location.href}/time`;
+  const urltable = window.location.href.endsWith('/') ? `${window.location.href}table` : `${window.location.href}/table`;
   const urladmin = window.location.href;
 
   // $.ajax({
@@ -241,10 +242,10 @@ $.ajax({
   let rsvps = json.rsvp;
   // console.log("J********SON********", rsvps);
 
-  $("#guestInfo").submit((e) => {
+  $("#after_true_false").submit((e) => {
 
     let guestEmail = $.trim($("input[type='email']").val());
-    let guestName = $.trim($("input[type='text']").val());
+    let guestName = $.trim($("input[name='name']").val());
 
     alert($.trim($("input[type='text']").val()));
 
@@ -281,80 +282,84 @@ $.ajax({
 
 
 
+  $( "form" ).submit(function( event ) {
+    console.log( "zzzzzzzzzzzzzzz", $( this ).serializeArray() );
+    event.preventDefault();
+  });
 
   $("#after_true_false").click(function(e) {
     e.preventDefault();
 
 
-    var someObj={};
-    someObj.Checked=[];
-    someObj.NotChecked=[];
+    // var someObj={};
+    // someObj.Checked=[];
+    // someObj.NotChecked=[];
+    // let guestName = $.trim($("input[type='text']").val());
+    // let arrDiv = [`<p>${guestName}</p>`];
 
 
-    $("input:checkbox").each(function(){
-      var $this = $(this);
+    // $("input:checkbox").each(function(){
+    //   var $this = $(this);
 
-      if($this.is(":checked")){
-        someObj.Checked.push($this.attr("id"));
-      }else{
-        someObj.Checked.push(0);
-      }
-    })
-    console.log("OOOOOOOOOOO", someObj);
-    console.log(data)
-
-
-    for (let i = 0; i < someObj.Checked.length; i++) {
-
-      if (Number(data[i].id) === Number(someObj.Checked[i])) {
-
-        console.log("data:", data[i].id);
-        console.log("objId:", someObj.Checked[i])
-
-        $('#true_false').append(`<p>T</p>`);
-      } else {
-        $('#true_false').append(`<p>F</p>`);
-      }
-
-    }
-
-    let guestName = $.trim($("input[type='text']").val());
-
-    alert($.trim($("input[type='text']").val()));
-
-    $('#true_false').prepend(`<p>${guestName}</p>`);
+    //   if($this.is(":checked")){
+    //     someObj.Checked.push($this.attr("id"));
+    //   }else{
+    //     someObj.Checked.push(0);
+    //   }
+    // })
+    // console.log("OOOOOOOOOOO", someObj);
+    // console.log(data)
 
 
+    // // for (let i = 0; i < someObj.Checked.length; i++) {
+    // //   if (Number(data[i].id) === Number(someObj.Checked[i])) {
+    // //     $('#true_false').append(`<p>T</p>`);
+    // //   } else {
+    // //     $('#true_false').append(`<p>F</p>`);
+    // //   }
+    // // }
+    // $('#true_false').prepend(`<p>${guestName}</p>`);
+
+    // // add to url database:
+    // for (let i = 0; i < someObj.Checked.length; i++) {
+    //   if (Number(data[i].id) === Number(someObj.Checked[i])) {
+    //     arrDiv.push(`<p>T</p>`);
+    //     $('#true_false').append(`<p>T</p>`);
+    //   } else {
+    //     arrDiv.push(`<p>F</p>`);
+    //     $('#true_false').append(`<p>F</p>`);
+    //   }
+    // }
+
+    // console.log("aaarrrrrraayyyy", arrDiv);
+
+    // $.ajax({
+    //   type: "POST",
+    //   url: urltable,
+    //   data: $(arrDiv),
+    //   dataType: 'json',
+    //   success: function(data) {
+    //     console.log(data);
+    //   },
+    //   error: function(xhr, status, err) {
+    //     console.log(err);
+    //   }
+
+    // });
 
 
   });
 
 
-// });
-
-
-  // $("input[type='checkbox']").click(() => {
-
-
-
-
-  //   for (let i of data) {
-  //     if (moment(data[i].start_date_time).format("MM/DD/YY") === moment(data[i].end_date_time).format("MM/DD/YY") && timeColumn === `${moment(data[i].start_date_time).format("MM/DD/YY")}
-  //     ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}`) {
-  //       alert("match");
-  //     } else if (timeColumn === `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("MM/DD/YY")} ${moment(data[i].end_date_time).format("hh:mm A")}`) {
-  //       alert("match");
-  //     } else {
-  //       alert("no match");
-  //     }
-
-  //   }
+  // $.ajax({
+  //   method: 'GET',
+  //   url: urltable,
+  //   dataType: 'json',
+  //   async: true
+  // }).done((table) => {
+  //   console.log(table.arrDiv);
   // })
-
-
-
 })
-
 
 
 
