@@ -81,18 +81,19 @@
     </div>
 
     <form class="form-box-final" method='POST' action= <%= `/events/${data[0].admin_token}` %> >
-<div >
-      <label for='name'></label>
+      <div >
+        <label for='name'></label>
         <input type='text' name='name' placeholder="Enter name here">
       </div>
       <div>
-      <label for='email'></label>
+        <label for='email'></label>
         <input type='email' name='email' placeholder="Enter email here">
       </div>
       <div>
-      <button type="submit" class='check-button'></button>
-    </div>
+        <button type="submit" id='guestInfo'></button>
+      </div>
     </form>
+
     <div>
         <a href="#anchor-two">
           <img

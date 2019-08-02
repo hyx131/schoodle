@@ -239,11 +239,14 @@ $.ajax({
   async: true
 }).done((json) => {
   let rsvps = json.rsvp;
-  console.log("J********SON********", rsvps);
+  // console.log("J********SON********", rsvps);
 
-  $("#guestInfo").on("click", (e) => {
+  $("#guestInfo").submit((e) => {
 
     let guestEmail = $.trim($("input[type='email']").val());
+    let guestName = $.trim($("input[type='text']").val());
+
+    alert($.trim($("input[type='text']").val()));
 
     for (let i of rsvps) {
       if (i.email === guestEmail) {
@@ -252,8 +255,13 @@ $.ajax({
         $('.wrong_email_error').slideDown("slow");
       }
     }
+
+    $('#true_false').append(`<p>${guestName}</p>`);
+
   })
 })
+
+
 
 
 
@@ -298,18 +306,23 @@ $.ajax({
 
     for (let i = 0; i < someObj.Checked.length; i++) {
 
-        if (Number(data[i].id) === Number(someObj.Checked[i])) {
+      if (Number(data[i].id) === Number(someObj.Checked[i])) {
 
-          console.log("data:", data[i].id);
-          console.log("objId:", someObj.Checked[i])
+        console.log("data:", data[i].id);
+        console.log("objId:", someObj.Checked[i])
 
-          $('#true_false').append(`<p>T</p>`);
-        } else {
-          $('#true_false').append(`<p>F</p>`);
-        }
-
+        $('#true_false').append(`<p>T</p>`);
+      } else {
+        $('#true_false').append(`<p>F</p>`);
       }
 
+    }
+
+    let guestName = $.trim($("input[type='text']").val());
+
+    alert($.trim($("input[type='text']").val()));
+
+    $('#true_false').prepend(`<p>${guestName}</p>`);
 
 
 
