@@ -11,12 +11,25 @@ module.exports = db => {
 
     pool.query(`SELECT * FROM rsvps JOIN users ON users.id = user_id JOIN events ON events.id = event_id WHERE admin_token = '${adminToken}'`)
     .then(results => {
-      console.log("=====AVAILABILITY=====", results);
+      // console.log("=====AVAILABILITY=====", results);
       let rsvp = results.rows;
 
       res.json({ rsvp });
     })
-    .catch((e) => console.log('error in events/:admin_token', e))
+    .catch((e) => console.log('error in events/:admin_token/json', e))
+  });
+
+
+  router.get("/:admin_token/time", (req, res) => {
+    let adminToken = req.params.admin_token;
+
+  pool.query(`SELECT users.*, events.*, time_slots.* FROM users JOIN events ON users.id = user_id JOIN time_slots ON event_id = events.id WHERE admin_token = '${adminToken}'`)
+    .then(results => {
+      let data = results.rows;
+
+      res.json({ data });
+    })
+    .catch((e) => console.log('error in events/:admin_token/time', e))
   });
 
 
@@ -40,10 +53,14 @@ module.exports = db => {
     let aToken = req.params.admin_token;
     let gEmail = req.body.email;
 
+    console.log("TTTTTTT", aToken);
+    console.log("EEEEEEEEEE", gEmail);
+
     pool.query(`
     (SELECT id FROM events WHERE admin_token = '${aToken}') UNION ALL
     (SELECT id FROM users WHERE email = '${gEmail}');
     `).then((res) => {
+      console.log("rrrrrrrr", res);
       let eventId = res.rows[0].id;
       let guestId = res.rows[1].id;
       console.log('===eventId====', res.rows)
