@@ -112,13 +112,14 @@
         <div class="admin-page-msg">
           <div class="form-check">
             <input
-              id="checkbox[]"
+              name='availability'
+              id="<%= data[i].id %>"
               type="checkbox"
               value="T/F"
             />
             <% if (moment(data[i].start_date_time).format("MM/DD/YY") === moment(data[i].end_date_time).format("MM/DD/YY")) { %>
             <label class="form-check-label" for="defaultCheck1">
-              <%= moment(data[i].start_date_time).format("MM/DD/YY")%>
+              <%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}`%>
             </label>
             <%= `${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}`%>
             <%= console.log("*************************************", `${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}`) %>
@@ -128,18 +129,9 @@
               </label>
             <% } %>
           </div>
-      </div>
-      <% } %>
-      <div>
-          <a href="#anchor-two">
-            <img
-              src="/images/down-button.png"
-              alt="down-button"
-              class="admin-down-button"
-            />
-          </a>
         </div>
-    </div>
+        <% } %>
+        <button id='after_true_false'>Go</button>
 
  <!-- Dive with form to fill in user name and email -->
 
@@ -148,17 +140,18 @@
 <div class="admin-rsvp-table">
     <img src="/images/step3.png" alt="number-two-img" class="step-buttons" />
 
-    <table border="1" style="width:100%">
-      <tr>
-        <th>Attendees:</th>
-        <% for (let i = 0; i < data.length; i++) { %>
-          <% if (moment(data[i].start_date_time).format("MM/DD/YY") === moment(data[i].end_date_time).format("MM/DD/YY")) { %>
-        <th><%= `${moment(data[i].start_date_time).format("MM/DD/YY")}
-          ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}` %></th>
-          <%} else {%>
-        <th><%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("MM/DD/YY")} ${moment(data[i].end_date_time).format("hh:mm A")}` %></th>
+      <table border="1" style="width:100%">
+        <tr>
+          <th>Name:</th>
+          <% for (let i = 0; i < data.length; i++) { %>
+            <% if (moment(data[i].start_date_time).format("MM/DD/YY") === moment(data[i].end_date_time).format("MM/DD/YY")) { %>
+          <th class='time_heading'><%= `${moment(data[i].start_date_time).format("MM/DD/YY")}
+            ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}` %></th>
+            <%} else {%>
+          <th class='time_heading'><%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("MM/DD/YY")} ${moment(data[i].end_date_time).format("hh:mm A")}` %></th>
+            <% } %>
           <% } %>
-        <% } %>
+
       </tr>
       <tr>
         <td><%= data[0].name %></td>
@@ -180,8 +173,10 @@
         </tr>
     </table>
 
-  </div>
-</div>
+    <div id="true_false">
+
+    </div>
+
 
     <!-- Div for the showing availability table with users -->
 
