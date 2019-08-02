@@ -211,6 +211,26 @@ $(document).ready(function() {
   // }).
 
 
+  // $("#guestInfo").on("click", (e) => {
+  //   e.preventDefault();
+  //   let guestName = $.trim($("input[type='text']").val());
+
+  //   $.ajax({
+  //     method: 'POST',
+  //     url: urljson,
+  //     data: { name: guestName },
+  //     dataType: 'json',
+  //     success: function() {
+  //       alert("added");
+  //     },
+  //     error: function() {
+  //       alert("not added");
+  //     }
+  //   })
+
+  // })
+
+// email authentication:
 $.ajax({
   method: 'GET',
   url: urljson,
@@ -221,7 +241,7 @@ $.ajax({
   // console.log("JSON", rsvps);
 
   $("#guestInfo").on("click", (e) => {
-    e.preventDefault();
+
     let guestEmail = $.trim($("input[type='email']").val());
 
     for (let i of rsvps) {
@@ -237,11 +257,6 @@ $.ajax({
 
 
 
-  // $("#guestInfo").on("click", (e) => {
-  //   e.preventDefault();
-  //   alert($.trim($("input[type='text']").val()));
-  //   alert($.trim($("input[type='email']").val()));
-  // })
 
 
   // $("input[type='checkbox']").click(() => {
