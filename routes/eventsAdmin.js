@@ -16,7 +16,20 @@ module.exports = db => {
 
       res.json({ rsvp });
     })
-    .catch((e) => console.log('error in events/:admin_token', e))
+    .catch((e) => console.log('error in events/:admin_token/json', e))
+  });
+
+
+  router.get("/:admin_token/time", (req, res) => {
+    let adminToken = req.params.admin_token;
+
+  pool.query(`SELECT users.*, events.*, time_slots.* FROM users JOIN events ON users.id = user_id JOIN time_slots ON event_id = events.id WHERE admin_token = '${adminToken}'`)
+    .then(results => {
+      let data = results.rows;
+
+      res.json({ data });
+    })
+    .catch((e) => console.log('error in events/:admin_token/time', e))
   });
 
 

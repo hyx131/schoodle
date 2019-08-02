@@ -201,6 +201,7 @@ $(document).ready(function() {
   $('.wrong_email_error').hide();
 
   const urljson = window.location.href.endsWith('/') ? `${window.location.href}json` : `${window.location.href}/json`;
+  const urltime = window.location.href.endsWith('/') ? `${window.location.href}time` : `${window.location.href}/time`;
   const urladmin = window.location.href;
 
   // $.ajax({
@@ -256,12 +257,92 @@ $.ajax({
 
 
 
+// check time columns:
+$.ajax({
+  method: 'GET',
+  url: urltime,
+  dataType: 'json',
+  async: true
+}).done((json) => {
+  let data = json.data;
+  // console.log("JSON", rsvps);
 
+  let timeColumn = $("input[type='checkbox']:checked:last").next().text();
+
+// $("input[type='checkbox']").click(() => {
+
+
+
+
+  $("#after_true_false").click(function(e) {
+    e.preventDefault();
+
+
+    var someObj={};
+    someObj.Checked=[];
+    someObj.NotChecked=[];
+
+
+    $("input:checkbox").each(function(){
+      var $this = $(this);
+
+      if($this.is(":checked")){
+        someObj.Checked.push($this.attr("id"));
+      }else{
+        someObj.NotChecked.push($this.attr("id"));
+      }
+    })
+    console.log("OOOOOOOOOOO", someObj);
+
+
+    for (let i = 0; i < data.length; i++) {
+      console.log("iiiiiiiiiiii", data[i].id);
+      for (let k = 0; k < someObj.Checked.length; k++) {
+        console.log("kkkkkkkkkkk", someObj.Checked[k]);
+        if (Number(data[i].id) === Number(someObj.Checked[k])) {
+          $('#true_false').append(`<p>T</p>`);
+        } else {
+          $('#true_false').append(`<p>F</p>`);
+        }
+        break;
+      }
+    }
+
+
+  });
+
+
+// });
 
 
   // $("input[type='checkbox']").click(() => {
-  //   alert($("input[type='checkbox']:checked:last").next().text())
+
+
+
+
+  //   for (let i of data) {
+  //     if (moment(data[i].start_date_time).format("MM/DD/YY") === moment(data[i].end_date_time).format("MM/DD/YY") && timeColumn === `${moment(data[i].start_date_time).format("MM/DD/YY")}
+  //     ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}`) {
+  //       alert("match");
+  //     } else if (timeColumn === `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("MM/DD/YY")} ${moment(data[i].end_date_time).format("hh:mm A")}`) {
+  //       alert("match");
+  //     } else {
+  //       alert("no match");
+  //     }
+
+  //   }
   // })
+
+
+
+})
+
+
+
+
+
+
+// alert($("input[type='checkbox']:checked:last").next().text())
 
 
   // $.each($('input[name = "availability"]:checked)'), () => {

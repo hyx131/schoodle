@@ -64,7 +64,7 @@
           <div class="form-check">
             <input
               name='availability'
-              id="checkbox[]"
+              id="<%=i + 1%>"
               type="checkbox"
               value="T/F"
             />
@@ -79,8 +79,9 @@
               </label>
             <% } %>
           </div>
-      </div>
-    <% } %>
+        </div>
+        <% } %>
+        <button id='after_true_false'>Go</button>
 
 
 
@@ -91,11 +92,11 @@
         <tr>
           <th>Name:</th>
           <% for (let i = 0; i < data.length; i++) { %>
-            <% if (moment(data[i].start_date_time).format("MM/DD/YY") === moment(data[i].start_end_time).format("MM/DD/YY")) { %>
+            <% if (moment(data[i].start_date_time).format("MM/DD/YY") === moment(data[i].end_date_time).format("MM/DD/YY")) { %>
           <th class='time_heading'><%= `${moment(data[i].start_date_time).format("MM/DD/YY")}
-            ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].start_end_time).format("hh:mm A")}` %></th>
+            ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("hh:mm A")}` %></th>
             <%} else {%>
-          <th class='time_heading'><%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].start_end_time).format("MM/DD/YY")} ${moment(data[i].start_end_time).format("hh:mm A")}` %></th>
+          <th class='time_heading'><%= `${moment(data[i].start_date_time).format("MM/DD/YY")} ${moment(data[i].start_date_time).format("hh:mm A")} - ${moment(data[i].end_date_time).format("MM/DD/YY")} ${moment(data[i].end_date_time).format("hh:mm A")}` %></th>
             <% } %>
           <% } %>
         </tr>
@@ -118,6 +119,10 @@
             <td>T</td>
           </tr>
       </table>
+
+    </div>
+
+    <div id="true_false">
 
     </div>
 
